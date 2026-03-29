@@ -42,7 +42,7 @@ export default function PreventativeMaintenance() {
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl">
             <img 
-              src="https://picsum.photos/seed/maintenance/800/600" 
+              src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&q=80&w=800&h=600" 
               alt="Technician performing maintenance" 
               className="w-full h-auto object-cover"
               referrerPolicy="no-referrer"

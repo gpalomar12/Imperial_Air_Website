@@ -69,8 +69,8 @@ export default function EmergencyService() {
         </div>
         <div className="rounded-3xl overflow-hidden shadow-xl">
           <img 
-            src="https://picsum.photos/seed/emergency-hvac/800/600" 
-            alt="Emergency HVAC service truck" 
+            src="https://images.unsplash.com/photo-1599700403969-f77b3aa74837?auto=format&fit=crop&q=80&w=800&h=600" 
+            alt="Emergency HVAC service" 
             className="w-full h-auto object-cover"
             referrerPolicy="no-referrer"
           />
