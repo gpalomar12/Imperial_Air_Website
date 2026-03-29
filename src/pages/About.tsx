@@ -54,14 +54,14 @@ export default function About() {
         <div className="relative">
           <div className="rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
             <img 
-              src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800&h=800" 
+              src="/images/comm_6.jpg" 
               alt="Imperial Air HVAC Team" 
               className="w-full h-auto object-cover"
               referrerPolicy="no-referrer"
             />
           </div>
           <div className="absolute -bottom-6 -right-6 bg-brand-orange text-white p-8 rounded-2xl shadow-xl hidden md:block">
-            <p className="text-5xl font-black mb-1">15+</p>
+            <p className="text-5xl font-black mb-1">5+</p>
             <p className="font-bold uppercase tracking-widest text-sm">Years of Local Service</p>
           </div>
         </div>

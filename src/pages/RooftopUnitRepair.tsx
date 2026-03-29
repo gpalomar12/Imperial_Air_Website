@@ -42,7 +42,7 @@ export default function RooftopUnitRepair() {
           </div>
           <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
             <img 
-              src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=1200&auto=format&fit=crop" 
+              src="/images/comm_roof_top_unit_2.jpg" 
               alt="Commercial Rooftop HVAC Units" 
               className="w-full h-auto object-cover"
               referrerPolicy="no-referrer"
