@@ -49,13 +49,15 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6"
+          onClick={onClose}
+        >
           {/* Backdrop */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
             className="absolute inset-0 bg-brand-dark/90 backdrop-blur-md"
           />
           
@@ -64,14 +66,18 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 40 }}
-            className="relative w-full max-w-3xl bg-white rounded-[2rem] shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-3xl bg-white rounded-[2rem] shadow-2xl overflow-hidden max-h-[85vh] flex flex-col"
           >
             <button 
               onClick={onClose}
-              className="absolute top-6 right-6 text-brand-gray hover:text-brand-dark transition-colors z-20"
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-brand-gray hover:text-brand-dark transition-colors z-30 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg border border-gray-100"
+              aria-label="Close modal"
             >
-              <X size={28} />
+              <X size={24} className="md:w-7 md:h-7" />
             </button>
+
+            <div className="overflow-y-auto flex-1">
 
             <div className="grid grid-cols-1 lg:grid-cols-12">
               {/* Sidebar Info */}
@@ -252,13 +258,23 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
                       </div>
                     </div>
 
-                    <button 
-                      type="submit"
-                      className="w-full bg-brand-orange text-white py-4 rounded-xl font-black uppercase tracking-widest text-lg shadow-xl shadow-orange-200 hover:bg-orange-600 transition-all active:scale-95 flex items-center justify-center gap-3"
-                    >
-                      <Send size={20} />
-                      Submit Proposal Request
-                    </button>
+                      <div className="pt-4 space-y-4">
+                        <button 
+                          type="submit"
+                          className="w-full bg-brand-orange text-white py-4 rounded-xl font-black uppercase tracking-widest text-lg shadow-xl shadow-orange-200 hover:bg-orange-600 transition-all active:scale-95 flex items-center justify-center gap-3"
+                        >
+                          <Send size={20} />
+                          Submit Proposal Request
+                        </button>
+                        
+                        <button 
+                          type="button"
+                          onClick={onClose}
+                          className="w-full py-3 text-sm font-bold uppercase tracking-widest text-brand-gray hover:text-brand-dark transition-colors lg:hidden"
+                        >
+                          Cancel / Close
+                        </button>
+                      </div>
                   </form>
                 ) : (
                   <div className="text-center py-12 space-y-6">
@@ -283,7 +299,8 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
                 )}
               </div>
             </div>
-          </motion.div>
+          </div>
+        </motion.div>
         </div>
       )}
     </AnimatePresence>

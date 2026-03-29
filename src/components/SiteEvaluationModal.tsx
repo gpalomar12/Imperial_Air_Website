@@ -46,13 +46,15 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6"
+          onClick={onClose}
+        >
           {/* Backdrop */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
             className="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm"
           />
           
@@ -61,16 +63,18 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl overflow-hidden max-h-[85vh] flex flex-col"
           >
             <button 
               onClick={onClose}
-              className="absolute top-6 right-6 text-brand-gray hover:text-brand-dark transition-colors z-20"
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-brand-gray hover:text-brand-dark transition-colors z-30 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-lg border border-gray-100"
+              aria-label="Close modal"
             >
-              <X size={24} />
+              <X size={24} className="md:w-7 md:h-7" />
             </button>
 
-            <div className="p-8 md:p-12">
+            <div className="overflow-y-auto flex-1 p-8 md:p-12">
               {!isSubmitted ? (
                 <div className="space-y-8">
                   <div className="space-y-2">
@@ -119,7 +123,7 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-1">
                         <label className="text-xs font-bold uppercase tracking-widest text-brand-gray">Email Address</label>
                         <input 
@@ -187,13 +191,23 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
                       />
                     </div>
 
-                    <button 
-                      type="submit"
-                      className={`w-full py-4 text-lg mt-4 flex items-center justify-center gap-2 rounded-xl font-bold text-white transition-all active:scale-95 ${isCommercial ? 'bg-brand-orange hover:bg-orange-600' : 'bg-brand-blue hover:bg-blue-700'}`}
-                    >
-                      <Send size={20} />
-                      Send {isCommercial ? 'Commercial' : 'Residential'} Request
-                    </button>
+                    <div className="pt-4 space-y-4">
+                      <button 
+                        type="submit"
+                        className={`w-full py-4 text-lg flex items-center justify-center gap-2 rounded-xl font-bold text-white transition-all active:scale-95 ${isCommercial ? 'bg-brand-orange hover:bg-orange-600' : 'bg-brand-blue hover:bg-blue-700'}`}
+                      >
+                        <Send size={20} />
+                        Send {isCommercial ? 'Commercial' : 'Residential'} Request
+                      </button>
+                      
+                      <button 
+                        type="button"
+                        onClick={onClose}
+                        className="w-full py-3 text-sm font-bold uppercase tracking-widest text-brand-gray hover:text-brand-dark transition-colors md:hidden"
+                      >
+                        Cancel / Close
+                      </button>
+                    </div>
                   </form>
                 </div>
               ) : (
