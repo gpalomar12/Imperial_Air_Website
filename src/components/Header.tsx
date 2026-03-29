@@ -5,8 +5,7 @@ import { cn } from '@/src/lib/utils';
 import { PHONE_NUMBER } from '@/src/constants';
 
 const navLinks = [
-  { name: 'Commercial', path: '/commercial' },
-  { name: 'Services', path: '/services' },
+  { name: 'Commercial Services', path: '/services' },
   { name: 'About', path: '/about' },
   { name: 'Service Areas', path: '/areas' },
   { name: 'Contact', path: '/contact' },

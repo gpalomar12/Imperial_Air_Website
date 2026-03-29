@@ -2,6 +2,17 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, Phone, Star, ArrowLeft } from 'lucide-react';
 import { PHONE_NUMBER } from '@/src/constants';
+import MapComponent from '@/src/components/MapComponent';
+
+const CITY_COORDS: Record<string, [number, number]> = {
+  'edinburg': [26.3017, -98.1633],
+  'mcallen': [26.2034, -98.2300],
+  'mission': [26.2159, -98.3253],
+  'pharr': [26.1948, -98.1836],
+  'weslaco': [26.1595, -97.9908],
+  'harlingen': [26.1906, -97.6961],
+  'brownsville': [25.9017, -97.4975],
+};
 
 export default function LocationPage() {
   const { city } = useParams();
@@ -65,19 +76,13 @@ export default function LocationPage() {
             </div>
           </div>
         </div>
-        <div className="rounded-3xl overflow-hidden shadow-2xl h-[400px] bg-gray-200 relative">
-          <iframe 
-            width="100%" 
-            height="100%" 
-            frameBorder="0" 
-            style={{ border: 0 }}
-            src={isRGV 
-              ? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d457917.8824143437!2d-98.34960161435546!3d26.2783864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8664536294a2872d%3A0x7d28795555555555!2sRio%20Grande%20Valley%2C%20TX!5e0!3m2!1sen!2sus!4v1711650000000!5m2!1sen!2sus"
-              : `https://maps.google.com/maps?q=${encodeURIComponent(cityName + ', TX')}&t=&z=13&ie=UTF8&iwloc=&output=embed`
-            }
-            allowFullScreen
-            title={`Imperial Air ${cityName} Service Area Map`}
-          ></iframe>
+        <div className="rounded-3xl overflow-hidden shadow-2xl h-[400px] bg-gray-200 relative group z-0">
+          <MapComponent 
+            center={city ? CITY_COORDS[city.toLowerCase()] || [26.3017, -98.1633] : [26.3017, -98.1633]} 
+            zoom={isRGV ? 10 : 13}
+            cityName={cityName}
+            isRGV={isRGV}
+          />
         </div>
       </div>
     </div>

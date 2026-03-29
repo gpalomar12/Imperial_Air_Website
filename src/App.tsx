@@ -19,7 +19,6 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/commercial" element={<CommercialServices />} />
           <Route path="/services" element={<CommercialServices />} />
           <Route path="/services/maintenance" element={<PreventativeMaintenance />} />
           <Route path="/services/emergency" element={<EmergencyService />} />

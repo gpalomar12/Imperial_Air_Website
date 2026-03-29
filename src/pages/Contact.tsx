@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowLeft } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowLeft, Star } from 'lucide-react';
 import { PHONE_NUMBER } from '@/src/constants';
+import MapComponent from '@/src/components/MapComponent';
 
 export default function Contact() {
   const navigate = useNavigate();
@@ -96,16 +97,8 @@ export default function Contact() {
           </div>
 
           {/* Map Embed */}
-          <div className="rounded-3xl overflow-hidden shadow-2xl h-[300px] bg-gray-200 relative">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              frameBorder="0" 
-              style={{ border: 0 }}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d457917.8824143437!2d-98.34960161435546!3d26.2783864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8664536294a2872d%3A0x7d28795555555555!2sRio%20Grande%20Valley%2C%20TX!5e0!3m2!1sen!2sus!4v1711650000000!5m2!1sen!2sus"
-              allowFullScreen
-              title="Imperial Air Service Area Map"
-            ></iframe>
+          <div className="rounded-3xl overflow-hidden shadow-2xl h-[300px] bg-gray-200 relative group z-0">
+            <MapComponent center={[26.3017, -98.1633]} zoom={13} />
           </div>
         </div>
 

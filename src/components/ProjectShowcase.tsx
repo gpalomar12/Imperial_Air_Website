@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ExternalLink, MapPin, CheckCircle2 } from 'lucide-react';
 
 const projects = [
@@ -55,7 +56,6 @@ const projects = [
 export default function ProjectShowcase() {
   return (
     <section className="py-24 px-6 md:px-12 bg-white overflow-hidden">
-      <div className="bg-blue-500 p-10 text-white text-center font-bold">PROJECT SHOWCASE COMPONENT RENDERING</div>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="space-y-4">
@@ -72,8 +72,12 @@ export default function ProjectShowcase() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
-            <div 
+            <motion.div 
               key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
               className="group cursor-pointer"
             >
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl mb-6 shadow-lg border border-gray-100">
@@ -107,7 +111,7 @@ export default function ProjectShowcase() {
                   {project.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
