@@ -25,17 +25,17 @@ export default function Hero() {
         >
           <div className="inline-flex items-center gap-2 bg-brand-orange text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
             <Shield size={16} />
-            Commercial HVAC Specialists
+            HVAC & Residential Specialists
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tight">
-            Commercial HVAC Services in the <span className="text-brand-orange">Rio Grande Valley</span>
+            Commercial & Residential HVAC Services in the <span className="text-brand-orange">Rio Grande Valley</span>
             <br />
             <span className="text-3xl md:text-4xl font-bold text-white/60">Reliable Systems. Zero Downtime.</span>
           </h1>
           
           <p className="text-xl text-white/80 max-w-xl leading-relaxed">
-            Preventative maintenance, emergency response, and long-term HVAC solutions for commercial properties and facilities. We keep your business running cool.
+            Preventative maintenance, emergency response, and long-term HVAC solutions for commercial and residential properties. We keep the RGV running cool.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
@@ -58,7 +58,7 @@ export default function Hero() {
               <div className="flex text-yellow-500">
                 {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
               </div>
-              <span className="font-bold text-sm text-white">4.9 Rating | 150+ Reviews</span>
+              <span className="font-bold text-sm text-white">5 Stars | 76 Reviews</span>
             </div>
             <div className="flex items-center gap-2 text-white/80 font-semibold text-sm">
               <Award size={18} className="text-brand-blue" />

@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
+import SEO from './components/SEO';
 import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
 import CommercialServices from './pages/CommercialServices';
@@ -15,6 +16,7 @@ import Contact from './pages/Contact';
 export default function App() {
   return (
     <Router>
+      <SEO />
       <ScrollToTop />
       <Layout>
         <Routes>

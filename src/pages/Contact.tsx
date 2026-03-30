@@ -64,8 +64,8 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-black text-brand-dark uppercase text-sm tracking-widest mb-1">Email Us</h3>
-                <a href="mailto:service@imperialairrgv.com" className="text-xl font-bold text-brand-gray hover:text-brand-orange transition-colors">
-                  service@imperialairrgv.com
+                <a href="mailto:hector.garza@imperialair-rgv.com" className="text-xl font-bold text-brand-gray hover:text-brand-orange transition-colors">
+                  hector.garza@imperialair-rgv.com
                 </a>
               </div>
             </div>
