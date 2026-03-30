@@ -43,6 +43,16 @@ export default function TrustProof() {
             <ShieldCheck size={80} />
           </div>
           <h3 className="text-2xl font-black border-b border-white/10 pb-4 uppercase tracking-tight">Case Study</h3>
+          
+          <div className="rounded-xl overflow-hidden mb-4 border border-white/10">
+            <img 
+              src="/images/digital_thermostat.jpg" 
+              alt="Smart Thermostat Optimization" 
+              className="w-full h-32 object-cover opacity-80"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+
           <div className="space-y-4 flex-grow">
             <h4 className="text-brand-orange font-bold text-xl">Retail Plaza HVAC Optimization</h4>
             <div className="space-y-2">

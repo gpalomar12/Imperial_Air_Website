@@ -54,7 +54,7 @@ export default function About() {
         <div className="relative">
           <div className="rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
             <img 
-              src="/images/comm_6.jpg" 
+              src="/images/hector_residential_unit.jpg" 
               alt="Imperial Air HVAC Team" 
               className="w-full h-auto object-cover"
               referrerPolicy="no-referrer"

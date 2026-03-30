@@ -50,6 +50,30 @@ const projects = [
     description: "Design-build HVAC installation for a new 3-story professional office building.",
     image: "/images/local_commercial_work.jpg",
     category: "Installation"
+  },
+  {
+    id: 7,
+    title: "Commercial Rooftop Maintenance",
+    location: "Weslaco, TX",
+    description: "Comprehensive maintenance for multiple rooftop units on a local shopping center.",
+    image: "/images/comm_4.jpg",
+    category: "Maintenance"
+  },
+  {
+    id: 8,
+    title: "Local Business HVAC Upgrade",
+    location: "Edinburg, TX",
+    description: "Modernizing HVAC systems for a growing local business to improve comfort and efficiency.",
+    image: "/images/local_business.jpg",
+    category: "Upgrade"
+  },
+  {
+    id: 9,
+    title: "New Home HVAC Installation",
+    location: "McAllen, TX",
+    description: "High-efficiency residential system installation for a custom new home build.",
+    image: "/images/new_home_hvac.jpg",
+    category: "Residential"
   }
 ];
 

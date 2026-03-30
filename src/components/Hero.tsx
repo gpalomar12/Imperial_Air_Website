@@ -76,7 +76,7 @@ export default function Hero() {
         >
           <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
             <img 
-              src="/images/comm_unit_crane.jpg" 
+              src="/images/comm_roof_top_unit.jpg" 
               alt="Commercial HVAC Rooftop Unit Installation" 
               className="w-full h-auto object-cover"
               referrerPolicy="no-referrer"
