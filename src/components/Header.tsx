@@ -30,6 +30,13 @@ export default function Header() {
 
   const shouldBeDark = isScrolled || isLightPage;
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <header 
       className={cn(
@@ -39,7 +46,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3 group">
           <div className="relative flex items-center justify-center w-10 h-10">
             <Flame className="absolute -left-1 text-brand-orange fill-brand-orange" size={24} />
             <Snowflake className="absolute -right-1 text-brand-blue" size={24} />
