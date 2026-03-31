@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Send, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
 
 interface SiteEvaluationModalProps {
   isOpen: boolean;
@@ -11,6 +12,8 @@ interface SiteEvaluationModalProps {
 
 export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercial', initialService = '' }: SiteEvaluationModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -24,23 +27,80 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
   // Reset form when modal opens with new initialService
   React.useEffect(() => {
     if (isOpen) {
-      setFormData(prev => ({
-        ...prev,
+      setIsSubmitted(false);
+      setFormData({
+        name: '',
+        company: '',
+        email: '',
+        phone: '',
+        message: '',
         serviceType: initialService || (type === 'commercial' ? 'General Commercial' : 'General Residential'),
         requestType: type
-      }));
+      });
+      setError(null);
     }
   }, [isOpen, initialService, type]);
 
   const isCommercial = type === 'commercial';
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form Data Submitted:', { ...formData, requestType: type });
-    // Simulate API call
-    setTimeout(() => {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // 1. Save to Firestore
+      const path = 'site_evaluations';
+      console.log('Saving to Firestore:', path);
+      try {
+        await addDoc(collection(db, path), {
+          ...formData,
+          createdAt: serverTimestamp()
+        });
+        console.log('Successfully saved to Firestore');
+      } catch (err) {
+        handleFirestoreError(err, OperationType.CREATE, path);
+      }
+
+      // 2. Send Email via backend
+      console.log('Sending email notification...');
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'evaluation',
+            data: formData
+          }),
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.warn('Email notification failed:', errorData.error);
+        } else {
+          console.log('Email notification sent successfully');
+        }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          console.warn('Email notification timed out');
+        } else {
+          console.warn('Email notification failed:', err);
+        }
+      }
+
       setIsSubmitted(true);
-    }, 800);
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError('There was an error submitting your request. Please try again or call us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -192,12 +252,24 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
                     </div>
 
                     <div className="pt-4 space-y-4">
+                      {error && (
+                        <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
+                          {error}
+                        </div>
+                      )}
                       <button 
                         type="submit"
-                        className={`w-full py-4 text-lg flex items-center justify-center gap-2 rounded-xl font-bold text-white transition-all active:scale-95 ${isCommercial ? 'bg-brand-orange hover:bg-orange-600' : 'bg-brand-blue hover:bg-blue-700'}`}
+                        disabled={isSubmitting}
+                        className={`w-full py-4 text-lg flex items-center justify-center gap-2 rounded-xl font-bold text-white transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed ${isCommercial ? 'bg-brand-orange hover:bg-orange-600' : 'bg-brand-blue hover:bg-blue-700'}`}
                       >
-                        <Send size={20} />
-                        Send {isCommercial ? 'Commercial' : 'Residential'} Request
+                        {isSubmitting ? (
+                          <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        ) : (
+                          <>
+                            <Send size={20} />
+                            Send {isCommercial ? 'Commercial' : 'Residential'} Request
+                          </>
+                        )}
                       </button>
                       
                       <button 

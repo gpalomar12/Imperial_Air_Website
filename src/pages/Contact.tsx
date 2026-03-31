@@ -2,16 +2,81 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowLeft, Star } from 'lucide-react';
-import { PHONE_NUMBER } from '@/src/constants';
+import { PHONE_NUMBER, EMAIL } from '@/src/constants';
 import MapComponent from '@/src/components/MapComponent';
+import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
 
 export default function Contact() {
   const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    serviceType: 'Commercial HVAC',
+    message: ''
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTimeout(() => setIsSubmitted(true), 800);
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // 1. Save to Firestore
+      const path = 'contact_messages';
+      console.log('Saving to Firestore:', path);
+      try {
+        await addDoc(collection(db, path), {
+          ...formData,
+          createdAt: serverTimestamp()
+        });
+        console.log('Successfully saved to Firestore');
+      } catch (err) {
+        handleFirestoreError(err, OperationType.CREATE, path);
+      }
+
+      // 2. Send Email via backend
+      console.log('Sending email notification...');
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'contact',
+            data: formData
+          }),
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.warn('Email notification failed:', errorData.error);
+        } else {
+          console.log('Email notification sent successfully');
+        }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          console.warn('Email notification timed out');
+        } else {
+          console.warn('Email notification failed:', err);
+        }
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError('There was an error sending your message. Please try again or call us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -62,12 +127,12 @@ export default function Contact() {
               <div className="w-12 h-12 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center">
                 <Mail size={24} />
               </div>
-              <div>
-                <h3 className="font-black text-brand-dark uppercase text-sm tracking-widest mb-1">Email Us</h3>
-                <a href="mailto:hector.garza@imperialair-rgv.com" className="text-xl font-bold text-brand-gray hover:text-brand-orange transition-colors">
-                  hector.garza@imperialair-rgv.com
-                </a>
-              </div>
+              <a href={`mailto:${EMAIL}`} className="block group">
+                <h3 className="font-black text-brand-dark uppercase text-sm tracking-widest mb-1 group-hover:text-brand-orange transition-colors">Email Us</h3>
+                <p className="text-xl font-bold text-brand-gray group-hover:text-brand-orange transition-colors break-all">
+                  {EMAIL}
+                </p>
+              </a>
             </div>
 
             <div className="space-y-4">
@@ -119,6 +184,8 @@ export default function Contact() {
                     type="text" 
                     className="w-full px-6 py-4 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all"
                     placeholder="John Doe"
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
                   />
                 </div>
                 <div className="space-y-2">
@@ -128,6 +195,8 @@ export default function Contact() {
                     type="tel" 
                     className="w-full px-6 py-4 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all"
                     placeholder="(956) 555-0123"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   />
                 </div>
               </div>
@@ -139,12 +208,18 @@ export default function Contact() {
                   type="email" 
                   className="w-full px-6 py-4 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all"
                   placeholder="john@example.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
               </div>
 
               <div className="space-y-2">
                 <label className="text-xs font-black uppercase tracking-widest text-brand-gray">Service Type</label>
-                <select className="w-full px-6 py-4 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all bg-white">
+                <select 
+                  className="w-full px-6 py-4 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all bg-white"
+                  value={formData.serviceType}
+                  onChange={(e) => setFormData({...formData, serviceType: e.target.value})}
+                >
                   <option>Commercial HVAC</option>
                   <option>Residential HVAC</option>
                   <option>Preventative Maintenance</option>
@@ -160,15 +235,30 @@ export default function Contact() {
                   rows={4}
                   className="w-full px-6 py-4 rounded-xl border border-gray-200 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange outline-none transition-all resize-none"
                   placeholder="How can we help you today?"
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                 />
               </div>
 
+              {error && (
+                <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
+                  {error}
+                </div>
+              )}
+
               <button 
                 type="submit"
-                className="w-full btn-primary py-5 text-xl"
+                disabled={isSubmitting}
+                className="w-full btn-primary py-5 text-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send size={24} />
-                Send Message
+                {isSubmitting ? (
+                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                ) : (
+                  <>
+                    <Send size={24} />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           ) : (

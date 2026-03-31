@@ -23,9 +23,15 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="space-y-8"
         >
-          <div className="inline-flex items-center gap-2 bg-brand-orange text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
-            <Shield size={16} />
-            HVAC & Residential Specialists
+          <div className="flex flex-wrap gap-3">
+            <div className="inline-flex items-center gap-2 bg-brand-orange text-white px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
+              <Shield size={16} />
+              HVAC & Residential Specialists
+            </div>
+            <div className="inline-flex items-center gap-2 bg-amber-400 text-black px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
+              <Award size={16} />
+              Under Construction
+            </div>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tight">

@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "ProposalRequest": {
+      "title": "Proposal Request",
+      "description": "A request for a commercial HVAC proposal.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the requester." },
+        "company": { "type": "string", "description": "Company name." },
+        "email": { "type": "string", "format": "email", "description": "Work email address." },
+        "phone": { "type": "string", "description": "Phone number." },
+        "facilityType": { "type": "string", "description": "Type of facility." },
+        "sqft": { "type": "string", "description": "Estimated square footage." },
+        "projectType": { "type": "string", "description": "Type of project." },
+        "timeline": { "type": "string", "description": "Project timeline." },
+        "message": { "type": "string", "description": "Additional details." },
+        "fileName": { "type": "string", "description": "Name of the uploaded file." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the request was submitted." }
+      },
+      "required": ["name", "company", "email", "phone", "createdAt"]
+    },
+    "SiteEvaluation": {
+      "title": "Site Evaluation",
+      "description": "A request for a site evaluation or home service.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the requester." },
+        "company": { "type": "string", "description": "Company name (optional for residential)." },
+        "email": { "type": "string", "format": "email", "description": "Email address." },
+        "phone": { "type": "string", "description": "Phone number." },
+        "serviceType": { "type": "string", "description": "Type of service requested." },
+        "message": { "type": "string", "description": "Description of the issue or need." },
+        "requestType": { "type": "string", "enum": ["commercial", "residential"], "description": "Whether it's a commercial or residential request." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the request was submitted." }
+      },
+      "required": ["name", "email", "phone", "requestType", "createdAt"]
+    },
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "A general message from the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the sender." },
+        "email": { "type": "string", "format": "email", "description": "Email address." },
+        "phone": { "type": "string", "description": "Phone number." },
+        "serviceType": { "type": "string", "description": "Type of service interested in." },
+        "message": { "type": "string", "description": "The message content." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the message was sent." }
+      },
+      "required": ["name", "email", "phone", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/proposal_requests/{id}": {
+      "schema": "ProposalRequest",
+      "description": "Collection of commercial proposal requests."
+    },
+    "/site_evaluations/{id}": {
+      "schema": "SiteEvaluation",
+      "description": "Collection of site evaluation and home service requests."
+    },
+    "/contact_messages/{id}": {
+      "schema": "ContactMessage",
+      "description": "Collection of general contact messages."
+    }
+  }
+}

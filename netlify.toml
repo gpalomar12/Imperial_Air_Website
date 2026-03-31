@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# Firebase web API keys are intentionally public (they identify the project
+# but access is controlled by Firebase security rules, not key secrecy).
+# This tells Netlify's scanner to skip this known-safe value.
+[build.environment]
+  SECRETS_SCAN_SMART_DETECTION_OMIT_VALUES = "AIzaSyCW9nDRJbqENDdtEwmULRPGbtVvloOwjpg"
+
+# Redirect all /api/send-email calls to the Netlify Function.
+# This means no code changes are needed in the frontend — the same
+# fetch('/api/send-email') calls will now hit the serverless function.
+[[redirects]]
+  from = "/api/send-email"
+  to = "/.netlify/functions/send-email"
+  status = 200
+
+# Catch-all for React Router (SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

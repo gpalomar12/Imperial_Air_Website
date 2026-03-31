@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 
 export const PHONE_NUMBER = "956-566-3406";
-export const EMAIL = "hector.garza@imperialair-rgv.com";
+export const EMAIL = "info@imperialair-rgv.com";
 export const ADDRESS = "Edinburg, TX";
 
 export const COMMERCIAL_SERVICES = [

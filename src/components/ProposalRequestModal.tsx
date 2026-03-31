@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { X, Send, CheckCircle2, Upload, FileText, Building2, Calendar, Ruler } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
 
 interface ProposalRequestModalProps {
   isOpen: boolean;
@@ -11,6 +12,8 @@ interface ProposalRequestModalProps {
 export default function ProposalRequestModal({ isOpen, onClose, initialService = '' }: ProposalRequestModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [formData, setFormData] = useState({
@@ -27,13 +30,85 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
     fileName: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Reset form when modal opens
+  React.useEffect(() => {
+    if (isOpen) {
+      setIsSubmitted(false);
+      setError(null);
+      setFormData({
+        name: '',
+        company: '',
+        title: '',
+        email: '',
+        phone: '',
+        facilityType: 'Office',
+        sqft: '',
+        projectType: initialService || 'Replacement',
+        timeline: 'Immediate',
+        message: '',
+        fileName: ''
+      });
+    }
+  }, [isOpen, initialService]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Proposal Request Submitted:', formData);
-    // Simulate API call
-    setTimeout(() => {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // 1. Save to Firestore
+      const path = 'proposal_requests';
+      console.log('Saving to Firestore:', path);
+      try {
+        await addDoc(collection(db, path), {
+          ...formData,
+          createdAt: serverTimestamp()
+        });
+        console.log('Successfully saved to Firestore');
+      } catch (err) {
+        handleFirestoreError(err, OperationType.CREATE, path);
+      }
+
+      // 2. Send Email via backend
+      console.log('Sending email notification...');
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'proposal',
+            data: formData
+          }),
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.warn('Email notification failed:', errorData.error);
+        } else {
+          console.log('Email notification sent successfully');
+        }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          console.warn('Email notification timed out');
+        } else {
+          console.warn('Email notification failed:', err);
+        }
+      }
+
       setIsSubmitted(true);
-    }, 1200);
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError('There was an error submitting your request. Please try again or call us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -259,12 +334,24 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
                     </div>
 
                       <div className="pt-4 space-y-4">
+                        {error && (
+                          <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
+                            {error}
+                          </div>
+                        )}
                         <button 
                           type="submit"
-                          className="w-full bg-brand-orange text-white py-4 rounded-xl font-black uppercase tracking-widest text-lg shadow-xl shadow-orange-200 hover:bg-orange-600 transition-all active:scale-95 flex items-center justify-center gap-3"
+                          disabled={isSubmitting}
+                          className="w-full bg-brand-orange text-white py-4 rounded-xl font-black uppercase tracking-widest text-lg shadow-xl shadow-orange-200 hover:bg-orange-600 transition-all active:scale-95 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          <Send size={20} />
-                          Submit Proposal Request
+                          {isSubmitting ? (
+                            <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          ) : (
+                            <>
+                              <Send size={20} />
+                              Submit Proposal Request
+                            </>
+                          )}
                         </button>
                         
                         <button 

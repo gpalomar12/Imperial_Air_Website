@@ -1,0 +1,117 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: proposal_requests
+    // Fields:
+    //   - name: string (required)
+    //   - company: string (required)
+    //   - email: string (required, email)
+    //   - phone: string (required)
+    //   - facilityType: string (optional)
+    //   - sqft: string (optional)
+    //   - projectType: string (optional)
+    //   - timeline: string (optional)
+    //   - message: string (optional)
+    //   - fileName: string (optional)
+    //   - createdAt: timestamp (required)
+    //
+    // Collection: site_evaluations
+    // Fields:
+    //   - name: string (required)
+    //   - company: string (optional)
+    //   - email: string (required, email)
+    //   - phone: string (required)
+    //   - serviceType: string (required)
+    //   - message: string (required)
+    //   - requestType: string (required, 'commercial' or 'residential')
+    //   - createdAt: timestamp (required)
+    //
+    // Collection: contact_messages
+    // Fields:
+    //   - name: string (required)
+    //   - email: string (required, email)
+    //   - phone: string (required)
+    //   - serviceType: string (optional)
+    //   - message: string (required)
+    //   - createdAt: timestamp (required)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "info@imperialair-rgv.com" && request.auth.token.email_verified == true));
+    }
+
+    function isValidEmail(email) {
+      return email is string &&
+        email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isValidProposalRequest(data) {
+      return data.keys().hasAll(['name', 'company', 'email', 'phone', 'createdAt']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
+             data.company is string && data.company.size() > 0 && data.company.size() < 200 &&
+             isValidEmail(data.email) &&
+             data.phone is string && data.phone.size() > 0 && data.phone.size() < 30 &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidSiteEvaluation(data) {
+      return data.keys().hasAll(['name', 'email', 'phone', 'serviceType', 'message', 'requestType', 'createdAt']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
+             isValidEmail(data.email) &&
+             data.phone is string && data.phone.size() > 0 && data.phone.size() < 30 &&
+             data.serviceType is string && data.serviceType.size() > 0 &&
+             data.message is string && data.message.size() > 0 && data.message.size() < 5000 &&
+             data.requestType in ['commercial', 'residential'] &&
+             data.createdAt is timestamp;
+    }
+
+    function isValidContactMessage(data) {
+      return data.keys().hasAll(['name', 'email', 'phone', 'message', 'createdAt']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 200 &&
+             isValidEmail(data.email) &&
+             data.phone is string && data.phone.size() > 0 && data.phone.size() < 30 &&
+             data.message is string && data.message.size() > 0 && data.message.size() < 5000 &&
+             data.createdAt is timestamp;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /proposal_requests/{id} {
+      allow create: if isValidProposalRequest(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /site_evaluations/{id} {
+      allow create: if isValidSiteEvaluation(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /contact_messages/{id} {
+      allow create: if isValidContactMessage(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow create, update: if isAdmin();
+    }
+  }
+}
