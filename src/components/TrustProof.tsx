@@ -65,7 +65,7 @@ export default function TrustProof() {
             </div>
             <div className="space-y-2">
               <p className="text-sm text-white/60 uppercase font-bold tracking-widest">Result</p>
-              <p className="text-brand-blue font-bold text-lg">35% less downtime, lower energy costs.</p>
+              <p className="text-brand-blue font-bold text-lg">80% less downtime, lower energy cost.</p>
             </div>
           </div>
           <button className="flex items-center gap-2 text-brand-orange font-black uppercase tracking-widest text-sm hover:gap-4 transition-all mt-6">

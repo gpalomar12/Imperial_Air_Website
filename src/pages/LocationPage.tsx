@@ -52,7 +52,7 @@ export default function LocationPage() {
             </a>
             <div className="flex items-center gap-2 bg-white px-6 py-4 rounded-xl shadow-sm border border-gray-100">
               <Star className="text-yellow-500" fill="currentColor" size={20} />
-              <span className="font-black text-brand-dark">4.9/5 Local Rating</span>
+              <span className="font-black text-brand-dark">5/5 Local Rating</span>
             </div>
           </div>
         </div>

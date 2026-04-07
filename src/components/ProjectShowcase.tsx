@@ -1,20 +1,18 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink, MapPin, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, CheckCircle2 } from 'lucide-react';
 
 const projects = [
   {
     id: 1,
     title: "Retail Plaza RTU Replacement",
-    location: "McAllen, TX",
     description: "Full system upgrade for a 12-unit retail complex, improving energy efficiency by 28%.",
     image: "/images/comm_unit_crane.jpg",
     category: "Installation"
   },
   {
     id: 2,
-    title: "Medical Facility Chiller Service",
-    location: "Edinburg, TX",
+    title: "Commercial Warehouse RTU Replacement",
     description: "Emergency repair and subsequent preventative maintenance plan for critical cooling systems.",
     image: "/images/comm_roof_top_unit_2.jpg",
     category: "Maintenance"
@@ -22,58 +20,51 @@ const projects = [
   {
     id: 3,
     title: "Industrial Warehouse Ventilation",
-    location: "Harlingen, TX",
-    description: "Large-scale ventilation and climate control for a 50,000 sq. ft. distribution center.",
+    description: "Large-scale ventilation and climate control for a distribution center.",
     image: "/images/comm_unit_crane2.jpg",
     category: "Industrial"
   },
   {
     id: 4,
-    title: "Office Complex Optimization",
-    location: "Brownsville, TX",
-    description: "Multi-zone VAV system optimization to reduce hot/cold spots and lower utility costs.",
-    image: "/images/comm_5.jpg",
+    title: "Commercial Unit Replacement",
+    description: "Emergency unit replacement completed within 24 hours, restoring efficient climate control with minimal disruption.",
+    image: "/images/comm_6.jpg",
     category: "Service"
   },
   {
     id: 5,
     title: "Restaurant Group Portfolio",
-    location: "Pharr, TX",
     description: "Ongoing preventative maintenance for a local restaurant group across 5 locations.",
-    image: "/images/comm_6.jpg",
+    image: "/images/comm_5.jpg",
     category: "Maintenance"
   },
   {
     id: 6,
-    title: "New Commercial Construction",
-    location: "Mission, TX",
-    description: "Design-build HVAC installation for a new 3-story professional office building.",
+    title: "Charity Donations",
+    description: "Donated one industrial fan for every 10 units sold to support the Palm Valley Animal Society.",
     image: "/images/local_commercial_work.jpg",
-    category: "Installation"
+    category: "Charity Donation"
   },
   {
     id: 7,
-    title: "Commercial Rooftop Maintenance",
-    location: "Weslaco, TX",
-    description: "Comprehensive maintenance for multiple rooftop units on a local shopping center.",
+    title: "Commercial Rooftop Replacement",
+    description: "Replacement for a rooftop unit on a local shopping center.",
     image: "/images/comm_4.jpg",
-    category: "Maintenance"
+    category: "Replacement"
   },
   {
     id: 8,
-    title: "Local Business HVAC Upgrade",
-    location: "Edinburg, TX",
-    description: "Modernizing HVAC systems for a growing local business to improve comfort and efficiency.",
+    title: "Local Business HVAC Estimate",
+    description: "Prepared a detailed commercial estimate for a popular local restaurant, outlining cost-effective HVAC solutions",
     image: "/images/local_business.jpg",
-    category: "Upgrade"
+    category: "Commercial Estimate"
   },
   {
     id: 9,
-    title: "New Home HVAC Installation",
-    location: "McAllen, TX",
-    description: "High-efficiency residential system installation for a custom new home build.",
+    title: "Brockerage Office HVAC Installation",
+    description: "Installed an HVAC system for a new brokerage office construction, ensuring efficient and reliable climate control.",
     image: "/images/new_home_hvac.jpg",
-    category: "Residential"
+    category: "Commercial"
   }
 ];
 
@@ -124,10 +115,6 @@ export default function ProjectShowcase() {
               </div>
               
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-brand-orange font-bold text-xs uppercase tracking-widest">
-                  <MapPin size={14} />
-                  {project.location}
-                </div>
                 <h3 className="text-xl font-black text-brand-dark group-hover:text-brand-orange transition-colors">
                   {project.title}
                 </h3>
