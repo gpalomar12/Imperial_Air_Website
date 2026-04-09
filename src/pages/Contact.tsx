@@ -85,7 +85,7 @@ export default function Contact() {
       <div className="bg-brand-dark py-24 px-6 md:px-12 text-white text-center relative">
         <div className="max-w-7xl mx-auto mb-8 text-left">
           <button 
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/')}
             className="flex items-center gap-2 text-white/60 hover:text-brand-orange font-bold uppercase tracking-widest text-xs transition-colors group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
@@ -124,20 +124,22 @@ export default function Contact() {
             </div>
 
             <div className="space-y-4">
-              <a 
-                href={`mailto:${EMAIL}`}
-                className="block group"
-              >
-                <div className="w-12 h-12 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-all">
-                  <Mail size={24} />
-                </div>
-                <div className="mt-4">
-                  <h3 className="font-black text-brand-dark uppercase text-sm tracking-widest mb-1 group-hover:text-brand-orange transition-colors">Email Us</h3>
-                  <p className="text-xl font-bold text-brand-gray group-hover:text-brand-orange transition-colors break-all">
-                    {EMAIL}
-                  </p>
-                </div>
-              </a>
+              <div className="flex flex-col gap-2">
+                <a 
+                  href={`mailto:${EMAIL}`}
+                  className="block group"
+                >
+                  <div className="w-12 h-12 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-all">
+                    <Mail size={24} />
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="font-black text-brand-dark uppercase text-sm tracking-widest mb-1 group-hover:text-brand-orange transition-colors">Email Us</h3>
+                    <p className="text-xl font-bold text-brand-gray group-hover:text-brand-orange transition-colors break-all">
+                      {EMAIL}
+                    </p>
+                  </div>
+                </a>
+              </div>
             </div>
 
             <div className="space-y-4">

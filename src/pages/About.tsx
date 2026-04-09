@@ -11,7 +11,7 @@ export default function About() {
       <div className="bg-brand-dark py-24 px-6 md:px-12 text-white text-center relative">
         <div className="max-w-7xl mx-auto mb-8 text-left">
           <button 
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/')}
             className="flex items-center gap-2 text-white/60 hover:text-brand-orange font-bold uppercase tracking-widest text-xs transition-colors group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
