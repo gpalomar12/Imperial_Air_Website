@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { X, Send, CheckCircle2, Upload, FileText, Building2, Calendar, Ruler } from 'lucide-react';
+import { X, Send, CheckCircle2, Upload, FileText, Building2, Calendar, Ruler, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
+import { PHONE_NUMBER, EMAIL } from '@/src/constants';
 
 interface ProposalRequestModalProps {
   isOpen: boolean;
@@ -182,9 +183,25 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
                   </div>
                 </div>
 
-                <div className="pt-8 border-t border-white/10">
+                <div className="pt-8 border-t border-white/10 space-y-3">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">Priority Support</p>
-                  <p className="text-sm font-bold">Commercial Desk: 956-566-3406</p>
+                  <a href={`tel:${PHONE_NUMBER}`} className="flex items-center gap-2 text-sm font-bold hover:text-brand-orange transition-colors">
+                    <Phone size={16} />
+                    Commercial Desk: {PHONE_NUMBER}
+                  </a>
+                  <a 
+                    href={`mailto:${EMAIL}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center gap-2 text-sm font-bold hover:text-brand-orange transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.open(`mailto:${EMAIL}`, '_blank');
+                    }}
+                  >
+                    <Mail size={16} />
+                    {EMAIL}
+                  </a>
                 </div>
               </div>
 

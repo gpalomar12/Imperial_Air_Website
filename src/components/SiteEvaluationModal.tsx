@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2 } from 'lucide-react';
+import { X, Send, CheckCircle2, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
+import { PHONE_NUMBER, EMAIL } from '@/src/constants';
 
 interface SiteEvaluationModalProps {
   isOpen: boolean;
@@ -257,6 +258,30 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
                           {error}
                         </div>
                       )}
+                      
+                      <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                        <a 
+                          href={`tel:${PHONE_NUMBER}`} 
+                          className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-200 font-bold text-brand-dark hover:bg-gray-50 transition-all"
+                        >
+                          <Phone size={18} />
+                          Call Now
+                        </a>
+                        <a 
+                          href={`mailto:${EMAIL}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-200 font-bold text-brand-dark hover:bg-gray-50 transition-all"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.open(`mailto:${EMAIL}`, '_blank');
+                          }}
+                        >
+                          <Mail size={18} />
+                          Email Us
+                        </a>
+                      </div>
+
                       <button 
                         type="submit"
                         disabled={isSubmitting}

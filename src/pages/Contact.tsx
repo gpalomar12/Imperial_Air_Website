@@ -124,14 +124,25 @@ export default function Contact() {
             </div>
 
             <div className="space-y-4">
-              <div className="w-12 h-12 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center">
-                <Mail size={24} />
-              </div>
-              <a href={`mailto:${EMAIL}`} className="block group">
-                <h3 className="font-black text-brand-dark uppercase text-sm tracking-widest mb-1 group-hover:text-brand-orange transition-colors">Email Us</h3>
-                <p className="text-xl font-bold text-brand-gray group-hover:text-brand-orange transition-colors break-all">
-                  {EMAIL}
-                </p>
+              <a 
+                href={`mailto:${EMAIL}`} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block group"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(`mailto:${EMAIL}`, '_blank');
+                }}
+              >
+                <div className="w-12 h-12 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-all">
+                  <Mail size={24} />
+                </div>
+                <div className="mt-4">
+                  <h3 className="font-black text-brand-dark uppercase text-sm tracking-widest mb-1 group-hover:text-brand-orange transition-colors">Email Us</h3>
+                  <p className="text-xl font-bold text-brand-gray group-hover:text-brand-orange transition-colors break-all">
+                    {EMAIL}
+                  </p>
+                </div>
               </a>
             </div>
 

@@ -13,48 +13,156 @@ export const PHONE_NUMBER = "956-566-3406";
 export const EMAIL = "info@imperialair-rgv.com";
 export const ADDRESS = "Edinburg, TX";
 
-export const COMMERCIAL_SERVICES = [
+export interface ServiceDetail {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  path: string;
+  longDescription: string;
+  benefits: string[];
+  solutions: string[];
+  image: string;
+}
+
+export const COMMERCIAL_SERVICES: ServiceDetail[] = [
   {
     id: 'maintenance',
     title: 'Preventative Maintenance',
     description: 'Customized plans to prevent failures and extend equipment life.',
     icon: 'ShieldCheck',
-    path: '/services/maintenance'
+    path: '/services/maintenance',
+    longDescription: 'Imperial Air provides comprehensive preventative maintenance programs designed specifically for commercial facilities. Our proactive approach identifies potential issues before they become costly failures, ensuring your business operations remain uninterrupted.',
+    benefits: [
+      'Extended equipment lifespan',
+      'Reduced energy consumption (up to 20%)',
+      'Priority emergency response',
+      'Detailed asset health reporting',
+      'Budget predictability for HVAC expenses'
+    ],
+    solutions: [
+      'Quarterly system inspections',
+      'Filter and belt replacement programs',
+      'Coil cleaning and sanitization',
+      'Refrigerant leak detection',
+      'Electrical component testing'
+    ],
+    image: '/images/comm_5.jpg'
   },
   {
     id: 'rtu',
     title: 'Rooftop Units (RTUs)',
     description: 'Expert installation and repair of commercial rooftop HVAC systems.',
     icon: 'Building2',
-    path: '/services/rooftop-units'
+    path: '/services/rooftop-units',
+    longDescription: 'Rooftop units are the backbone of commercial climate control. We specialize in the installation, repair, and optimization of all major RTU brands, ensuring efficient heating and cooling for retail spaces, offices, and warehouses.',
+    benefits: [
+      'Space-saving roof installation',
+      'Zoned climate control capabilities',
+      'High-efficiency performance',
+      'Easy access for maintenance',
+      'Quiet indoor operation'
+    ],
+    solutions: [
+      'New RTU installation and rigging',
+      'Compressor and motor repairs',
+      'Economizer troubleshooting',
+      'VFD installation and programming',
+      'Curb adapter customization'
+    ],
+    image: '/images/comm_unit_crane.jpg'
   },
   {
     id: 'chillers',
     title: 'Chillers & Large Systems',
     description: 'Specialized service for complex commercial cooling infrastructure.',
     icon: 'ThermometerSnowflake',
-    path: '/services/chillers'
+    path: '/services/chillers',
+    longDescription: 'For large-scale facilities, chiller systems provide the necessary cooling capacity. Our technicians are trained in the complexities of water-cooled and air-cooled chillers, cooling towers, and associated pumping systems.',
+    benefits: [
+      'Massive cooling capacity for large buildings',
+      'Precise temperature and humidity control',
+      'Long-term operational efficiency',
+      'Scalable cooling solutions',
+      'Integrated building automation'
+    ],
+    solutions: [
+      'Chiller overhaul and tube cleaning',
+      'Cooling tower maintenance',
+      'Water treatment coordination',
+      'Pump and valve replacement',
+      'System balancing and optimization'
+    ],
+    image: '/images/comm_roof_top_unit_2.jpg'
   },
   {
     id: 'emergency',
     title: 'Emergency Service',
     description: '24/7 rapid response for critical commercial HVAC failures.',
     icon: 'Clock',
-    path: '/services/emergency'
+    path: '/services/emergency',
+    longDescription: 'HVAC failures don\'t happen on a schedule. When critical cooling goes down, your business can suffer. Imperial Air offers 24/7 emergency response to get your systems back online quickly and minimize downtime.',
+    benefits: [
+      '24/7 availability, including holidays',
+      'Rapid dispatch to Edinburg and RGV',
+      'Fully stocked service vehicles',
+      'Expert diagnostic capabilities',
+      'Priority for contract customers'
+    ],
+    solutions: [
+      'Emergency compressor replacement',
+      'Critical leak repair',
+      'Control system troubleshooting',
+      'Temporary cooling solutions',
+      'Rapid parts sourcing'
+    ],
+    image: '/images/comm_unit_crane2.jpg'
   },
   {
     id: 'upgrades',
     title: 'System Upgrades',
     description: 'Modernizing your facility with high-efficiency HVAC technology.',
     icon: 'Zap',
-    path: '/services/upgrades'
+    path: '/services/upgrades',
+    longDescription: 'Older HVAC systems can be a drain on your bottom line. We help commercial property owners modernize their facilities with high-efficiency equipment and smart controls that pay for themselves through energy savings.',
+    benefits: [
+      'Significant utility bill reduction',
+      'Improved indoor air quality',
+      'Enhanced employee and customer comfort',
+      'Compliance with modern energy codes',
+      'Increased property value'
+    ],
+    solutions: [
+      'High-efficiency equipment retrofits',
+      'Smart thermostat and BAS integration',
+      'Ductwork optimization',
+      'Indoor air quality (IAQ) upgrades',
+      'Rebate and incentive guidance'
+    ],
+    image: '/images/comm_4.jpg'
   },
   {
     id: 'optimization',
     title: 'Energy Optimization',
     description: 'Reducing operational costs through smart system tuning.',
     icon: 'Settings',
-    path: '/services/optimization'
+    path: '/services/optimization',
+    longDescription: 'Even new systems can be inefficient if not properly tuned. Our energy optimization service looks at your entire HVAC ecosystem to identify waste and implement strategies that lower your operational costs.',
+    benefits: [
+      'Lowered operational expenses',
+      'Reduced carbon footprint',
+      'Optimized system performance',
+      'Extended equipment life',
+      'Better building comfort'
+    ],
+    solutions: [
+      'Energy audits and assessments',
+      'System re-commissioning',
+      'Air and water balancing',
+      'Control logic optimization',
+      'Peak load management strategies'
+    ],
+    image: '/images/digital_thermostat.jpg'
   }
 ];
 

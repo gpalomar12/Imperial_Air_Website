@@ -12,7 +12,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Commercial Warehouse RTU Replacement",
+    title: "Commercial RTU Replacement",
     description: "Emergency repair and subsequent preventative maintenance plan for critical cooling systems.",
     image: "/images/comm_roof_top_unit_2.jpg",
     category: "Maintenance"
@@ -61,7 +61,7 @@ const projects = [
   },
   {
     id: 9,
-    title: "Brockerage Office HVAC Installation",
+    title: "Brokerage Office HVAC Installation",
     description: "Installed an HVAC system for a new brokerage office construction, ensuring efficient and reliable climate control.",
     image: "/images/new_home_hvac.jpg",
     category: "Commercial"

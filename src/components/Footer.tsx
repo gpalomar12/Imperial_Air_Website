@@ -71,8 +71,19 @@ export default function Footer() {
               <a href={`tel:${PHONE_NUMBER}`} className="hover:text-brand-orange transition-colors">{PHONE_NUMBER}</a>
             </li>
             <li className="flex items-start gap-3">
-              <Mail size={18} className="text-brand-orange shrink-0" />
-              <a href={`mailto:${EMAIL}`} className="hover:text-brand-orange transition-colors">{EMAIL}</a>
+              <a 
+                href={`mailto:${EMAIL}`} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-start gap-3 hover:text-brand-orange transition-colors group"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open(`mailto:${EMAIL}`, '_blank');
+                }}
+              >
+                <Mail size={18} className="text-brand-orange shrink-0 group-hover:text-brand-orange transition-colors" />
+                <span>{EMAIL}</span>
+              </a>
             </li>
             <li className="flex items-start gap-3">
               <MapPin size={18} className="text-brand-orange shrink-0" />
