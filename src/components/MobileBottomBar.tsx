@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Calendar } from 'lucide-react';
-import { PHONE_NUMBER } from '@/src/constants';
+import { PHONE_NUMBER } from '../constants';
 import SiteEvaluationModal from './SiteEvaluationModal';
 
 export default function MobileBottomBar() {

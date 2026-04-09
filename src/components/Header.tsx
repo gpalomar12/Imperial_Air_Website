@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Menu, X, Flame, Snowflake } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
-import { PHONE_NUMBER } from '@/src/constants';
+import { cn } from '../lib/utils';
+import { PHONE_NUMBER } from '../constants';
 
 const navLinks = [
   { name: 'Commercial Services', path: '/services' },

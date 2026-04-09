@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { COMMERCIAL_SERVICES, PHONE_NUMBER, EMAIL } from '@/src/constants';
+import { COMMERCIAL_SERVICES, PHONE_NUMBER, EMAIL } from '../constants';
 import { ArrowRight, FileText, ClipboardCheck, ArrowLeft, CheckCircle2, ShieldCheck, Zap, Settings, Mail } from 'lucide-react';
 import SiteEvaluationModal from '../components/SiteEvaluationModal';
 import ProposalRequestModal from '../components/ProposalRequestModal';
@@ -160,13 +160,7 @@ export default function ServiceDetail() {
             </a>
             <a 
               href={`mailto:${EMAIL}`} 
-              target="_blank" 
-              rel="noopener noreferrer" 
               className="btn-outline border-white text-white hover:bg-white hover:text-brand-dark px-10 py-4 text-lg"
-              onClick={(e) => {
-                e.preventDefault();
-                window.open(`mailto:${EMAIL}`, '_blank');
-              }}
             >
               <Mail size={20} />
               Email Us

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, Phone, Star, ArrowLeft } from 'lucide-react';
-import { PHONE_NUMBER } from '@/src/constants';
-import MapComponent from '@/src/components/MapComponent';
+import { PHONE_NUMBER } from '../constants';
+import MapComponent from '../components/MapComponent';
 
 const CITY_COORDS: Record<string, [number, number]> = {
   'edinburg': [26.3017, -98.1633],

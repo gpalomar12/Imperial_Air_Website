@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Flame, Snowflake } from 'lucide-react';
-import { PHONE_NUMBER, EMAIL, ADDRESS } from '@/src/constants';
+import { Phone, Mail, MapPin, Facebook, Instagram, Flame, Snowflake } from 'lucide-react';
+import { PHONE_NUMBER, EMAIL, ADDRESS } from '../constants';
 
 export default function Footer() {
   return (
@@ -32,7 +32,6 @@ export default function Footer() {
           <div className="flex gap-4">
             <a href="#" className="hover:text-brand-orange transition-colors"><Facebook size={20} /></a>
             <a href="#" className="hover:text-brand-orange transition-colors"><Instagram size={20} /></a>
-            <a href="#" className="hover:text-brand-orange transition-colors"><Linkedin size={20} /></a>
           </div>
         </div>
 
@@ -73,13 +72,7 @@ export default function Footer() {
             <li className="flex items-start gap-3">
               <a 
                 href={`mailto:${EMAIL}`} 
-                target="_blank" 
-                rel="noopener noreferrer" 
                 className="flex items-start gap-3 hover:text-brand-orange transition-colors group"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open(`mailto:${EMAIL}`, '_blank');
-                }}
               >
                 <Mail size={18} className="text-brand-orange shrink-0 group-hover:text-brand-orange transition-colors" />
                 <span>{EMAIL}</span>

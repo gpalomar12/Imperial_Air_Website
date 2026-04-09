@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { X, Send, CheckCircle2, Upload, FileText, Building2, Calendar, Ruler, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
-import { PHONE_NUMBER, EMAIL } from '@/src/constants';
+import { PHONE_NUMBER, EMAIL } from '../constants';
 
 interface ProposalRequestModalProps {
   isOpen: boolean;
@@ -191,13 +191,7 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
                   </a>
                   <a 
                     href={`mailto:${EMAIL}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
                     className="flex items-center gap-2 text-sm font-bold hover:text-brand-orange transition-colors"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      window.open(`mailto:${EMAIL}`, '_blank');
-                    }}
                   >
                     <Mail size={16} />
                     {EMAIL}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Phone, FileText, Star, Shield, Award } from 'lucide-react';
-import { PHONE_NUMBER } from '@/src/constants';
+import { PHONE_NUMBER } from '../constants';
 import ProposalRequestModal from './ProposalRequestModal';
 
 export default function Hero() {

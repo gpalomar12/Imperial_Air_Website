@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, AlertTriangle } from 'lucide-react';
-import { PHONE_NUMBER } from '@/src/constants';
+import { PHONE_NUMBER } from '../constants';
 
 export default function EmergencyBanner() {
   return (

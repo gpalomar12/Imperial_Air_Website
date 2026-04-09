@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
-import { FAQS } from '@/src/constants';
+import { FAQS } from '../constants';
 
 export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);

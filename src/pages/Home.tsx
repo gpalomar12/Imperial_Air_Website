@@ -1,13 +1,13 @@
 import React from 'react';
-import Hero from '@/src/components/Hero';
-import ServiceSegmentation from '@/src/components/ServiceSegmentation';
-import EmergencyBanner from '@/src/components/EmergencyBanner';
-import TrustProof from '@/src/components/TrustProof';
-import WhyChooseUs from '@/src/components/WhyChooseUs';
-import CommercialServicesGrid from '@/src/components/CommercialServicesGrid';
-import ProjectShowcase from '@/src/components/ProjectShowcase';
-import FAQAccordion from '@/src/components/FAQAccordion';
-import SecondaryCTA from '@/src/components/SecondaryCTA';
+import Hero from '../components/Hero';
+import ServiceSegmentation from '../components/ServiceSegmentation';
+import EmergencyBanner from '../components/EmergencyBanner';
+import TrustProof from '../components/TrustProof';
+import WhyChooseUs from '../components/WhyChooseUs';
+import CommercialServicesGrid from '../components/CommercialServicesGrid';
+import ProjectShowcase from '../components/ProjectShowcase';
+import FAQAccordion from '../components/FAQAccordion';
+import SecondaryCTA from '../components/SecondaryCTA';
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Award, ArrowRight, Star, Quote } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { TESTIMONIALS } from '@/src/constants';
+import { TESTIMONIALS } from '../constants';
 
 export default function TrustProof() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);

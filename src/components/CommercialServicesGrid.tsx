@@ -10,7 +10,7 @@ import {
   Settings,
   ArrowRight
 } from 'lucide-react';
-import { COMMERCIAL_SERVICES } from '@/src/constants';
+import { COMMERCIAL_SERVICES } from '../constants';
 
 const iconMap: Record<string, any> = {
   ShieldCheck,

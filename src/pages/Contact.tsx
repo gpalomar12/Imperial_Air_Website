@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowLeft, Star } from 'lucide-react';
-import { PHONE_NUMBER, EMAIL } from '@/src/constants';
-import MapComponent from '@/src/components/MapComponent';
+import { PHONE_NUMBER, EMAIL } from '../constants';
+import MapComponent from '../components/MapComponent';
 import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
 
 export default function Contact() {
@@ -125,14 +125,8 @@ export default function Contact() {
 
             <div className="space-y-4">
               <a 
-                href={`mailto:${EMAIL}`} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+                href={`mailto:${EMAIL}`}
                 className="block group"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open(`mailto:${EMAIL}`, '_blank');
-                }}
               >
                 <div className="w-12 h-12 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center group-hover:bg-brand-orange group-hover:text-white transition-all">
                   <Mail size={24} />

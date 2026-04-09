@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { COMMERCIAL_SERVICES } from '@/src/constants';
-import CommercialServicesGrid from '@/src/components/CommercialServicesGrid';
+import { COMMERCIAL_SERVICES } from '../constants';
+import CommercialServicesGrid from '../components/CommercialServicesGrid';
 
 export default function CommercialServices() {
   const navigate = useNavigate();

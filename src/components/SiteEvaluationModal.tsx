@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { X, Send, CheckCircle2, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
-import { PHONE_NUMBER, EMAIL } from '@/src/constants';
+import { PHONE_NUMBER, EMAIL } from '../constants';
 
 interface SiteEvaluationModalProps {
   isOpen: boolean;
@@ -269,13 +269,7 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
                         </a>
                         <a 
                           href={`mailto:${EMAIL}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
                           className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-200 font-bold text-brand-dark hover:bg-gray-50 transition-all"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            window.open(`mailto:${EMAIL}`, '_blank');
-                          }}
                         >
                           <Mail size={18} />
                           Email Us
