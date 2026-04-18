@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import MobileBottomBar from './MobileBottomBar';
-import ConstructionBanner from './ConstructionBanner';
 import BackToTop from './BackToTop';
 
 interface LayoutProps {

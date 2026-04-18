@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, Menu, X, Flame, Snowflake, Construction } from 'lucide-react';
+import { Phone, Menu, X, Flame, Snowflake } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { PHONE_NUMBER, EMAIL } from '../constants';
 
@@ -44,12 +44,6 @@ export default function Header() {
         shouldBeDark ? "bg-white shadow-md" : "bg-transparent"
       )}
     >
-      {/* Construction Banner - Integrated into Header */}
-      <div className="bg-amber-400 text-black py-1.5 px-4 flex items-center justify-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-wider">
-        <Construction className="w-3 h-3 md:w-4 md:h-4" />
-        <span>Site Update in Progress — RGV's Commercial HVAC Leader</span>
-      </div>
-
       <div className={cn(
         "px-6 md:px-12 transition-all duration-300",
         shouldBeDark ? "py-3" : "py-6"

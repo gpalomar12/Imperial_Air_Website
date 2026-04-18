@@ -28,10 +28,6 @@ export default function Hero() {
               <Shield size={16} />
               HVAC & Residential Specialists
             </div>
-            <div className="inline-flex items-center gap-2 bg-amber-400 text-black px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wider">
-              <Award size={16} />
-              Under Construction
-            </div>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.1] tracking-tight">

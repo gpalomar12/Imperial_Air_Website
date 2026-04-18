@@ -30,7 +30,15 @@ export default function Footer() {
             LICENSE: TACLA00111452C
           </div>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-brand-orange transition-colors"><Facebook size={20} /></a>
+            <a 
+              href="https://www.facebook.com/share/17bfELzWzQ/?mibextid=wwXIfr" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-brand-orange transition-colors"
+              aria-label="Follow us on Facebook"
+            >
+              <Facebook size={20} />
+            </a>
             <a href="#" className="hover:text-brand-orange transition-colors"><Instagram size={20} /></a>
           </div>
         </div>
