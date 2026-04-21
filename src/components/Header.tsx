@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, Menu, X, Flame, Snowflake } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { PHONE_NUMBER, EMAIL } from '../constants';
+import BrandIcon from './BrandIcon';
 
 const navLinks = [
   { name: 'Commercial Services', path: '/services' },
@@ -51,10 +52,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
           <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3 group">
-            <div className="relative flex items-center justify-center w-10 h-10">
-              <Flame className="absolute -left-1 text-brand-orange fill-brand-orange" size={24} />
-              <Snowflake className="absolute -right-1 text-brand-blue" size={24} />
-            </div>
+            <BrandIcon size={40} />
             <div className="flex flex-col">
               <span className={cn(
                 "text-2xl font-black tracking-tighter leading-none uppercase transition-colors duration-300",

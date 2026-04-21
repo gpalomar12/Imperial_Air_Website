@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram, Flame, Snowflake } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 import { PHONE_NUMBER, EMAIL, ADDRESS } from '../constants';
+import BrandIcon from './BrandIcon';
 
 export default function Footer() {
   return (
@@ -10,10 +11,7 @@ export default function Footer() {
         {/* Column 1: Logo + About */}
         <div className="space-y-6">
           <Link to="/" className="flex items-center gap-3">
-            <div className="relative flex items-center justify-center w-10 h-10">
-              <Flame className="absolute -left-1 text-brand-orange fill-brand-orange" size={24} />
-              <Snowflake className="absolute -right-1 text-brand-blue" size={24} />
-            </div>
+            <BrandIcon size={40} />
             <div className="flex flex-col">
               <span className="text-2xl font-black tracking-tighter leading-none">
                 IMPERIAL <span className="text-brand-blue">AIR</span> <span className="text-[10px] font-bold">LLC</span>

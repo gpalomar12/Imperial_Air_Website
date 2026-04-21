@@ -8,10 +8,26 @@ import CommercialServicesGrid from '../components/CommercialServicesGrid';
 import ProjectShowcase from '../components/ProjectShowcase';
 import FAQAccordion from '../components/FAQAccordion';
 import SecondaryCTA from '../components/SecondaryCTA';
+import SchemaMarkup from '../components/SchemaMarkup';
+import { FAQS } from '../constants';
 
 export default function Home() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQS.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <div className="overflow-hidden">
+      <SchemaMarkup data={faqSchema} />
       <Hero />
       <ServiceSegmentation />
       <EmergencyBanner />

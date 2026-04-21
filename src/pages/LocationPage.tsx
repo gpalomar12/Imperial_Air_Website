@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, Phone, Star, ArrowLeft } from 'lucide-react';
 import { PHONE_NUMBER } from '../constants';
 import MapComponent from '../components/MapComponent';
+import SchemaMarkup from '../components/SchemaMarkup';
 
 const CITY_COORDS: Record<string, [number, number]> = {
   'edinburg': [26.3017, -98.1633],
@@ -23,8 +24,33 @@ export default function LocationPage() {
   const displayLocation = isRGV ? cityName : `${cityName}, TX`;
   const callButtonText = isRGV ? "Call RGV Service" : `Call ${cityName} Service`;
 
+  const locationSchema = {
+    "@context": "https://schema.org",
+    "@type": "HVACBusiness",
+    "name": `Imperial Air LLC - ${cityName}`,
+    "description": `Professional commercial and residential HVAC services in ${displayLocation}. Expert repairs and maintenance.`,
+    "url": window.location.href,
+    "telephone": PHONE_NUMBER,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": cityName,
+      "addressRegion": "TX",
+      "addressCountry": "US"
+    },
+    "geo": city ? {
+      "@type": "GeoCoordinates",
+      "latitude": CITY_COORDS[city.toLowerCase()]?.[0],
+      "longitude": CITY_COORDS[city.toLowerCase()]?.[1]
+    } : undefined,
+    "areaServed": {
+      "@type": city ? "City" : "AdministrativeArea",
+      "name": cityName
+    }
+  };
+
   return (
     <div className="pt-24">
+      <SchemaMarkup data={locationSchema} />
       <div className="bg-gray-50 py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <button 

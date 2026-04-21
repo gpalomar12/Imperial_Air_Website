@@ -4,6 +4,7 @@ import { COMMERCIAL_SERVICES, PHONE_NUMBER, EMAIL } from '../constants';
 import { ArrowRight, FileText, ClipboardCheck, ArrowLeft, CheckCircle2, ShieldCheck, Zap, Settings, Mail } from 'lucide-react';
 import SiteEvaluationModal from '../components/SiteEvaluationModal';
 import ProposalRequestModal from '../components/ProposalRequestModal';
+import SchemaMarkup from '../components/SchemaMarkup';
 import { motion } from 'motion/react';
 
 export default function ServiceDetail() {
@@ -26,12 +27,36 @@ export default function ServiceDetail() {
     </div>
   );
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.title,
+    "description": service.longDescription,
+    "provider": {
+      "@type": "HVACBusiness",
+      "name": "Imperial Air LLC"
+    },
+    "areaServed": "Rio Grande Valley",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": service.title,
+      "itemListElement": service.solutions.map(solution => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": solution
+        }
+      }))
+    }
+  };
+
   const openProposal = () => setModalState({ isOpen: true, type: 'proposal' });
   const openEvaluation = () => setModalState({ isOpen: true, type: 'evaluation' });
   const closeModal = () => setModalState(prev => ({ ...prev, isOpen: false }));
 
   return (
     <div className="pt-24">
+      <SchemaMarkup data={serviceSchema} />
       {/* Hero Section */}
       <section className="bg-gray-50 py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
