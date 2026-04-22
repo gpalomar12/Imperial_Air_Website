@@ -77,7 +77,7 @@ export default function ServiceSegmentation() {
             </div>
 
             <div className="relative z-10 flex-grow">
-              <h3 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">Residential HVAC</h3>
+              <h3 className="text-3xl md:text-4xl font-black text-brand-dark mb-6">Residential AC Services</h3>
               <p className="text-brand-gray mb-8 text-lg">
                 Reliable home comfort solutions for your family.
               </p>

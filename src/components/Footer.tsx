@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook } from 'lucide-react';
 import { PHONE_NUMBER, EMAIL, ADDRESS } from '../constants';
 import BrandIcon from './BrandIcon';
 
@@ -37,7 +37,6 @@ export default function Footer() {
             >
               <Facebook size={20} />
             </a>
-            <a href="#" className="hover:text-brand-orange transition-colors"><Instagram size={20} /></a>
           </div>
         </div>
 
