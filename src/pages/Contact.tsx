@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowLeft, Star } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowLeft, Star, Shield, Zap, Users } from 'lucide-react';
 import { PHONE_NUMBER, EMAIL } from '../constants';
 import MapComponent from '../components/MapComponent';
 import { db, collection, addDoc, serverTimestamp, OperationType, handleFirestoreError } from '../firebase';
@@ -80,7 +80,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-24">
+    <div className="pt-32">
       {/* Hero Section */}
       <div className="bg-brand-dark py-24 px-6 md:px-12 text-white text-center relative">
         <div className="max-w-7xl mx-auto mb-8 text-left">
@@ -165,6 +165,40 @@ export default function Contact() {
                   24/7 Emergency Support
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Value Reinforcement */}
+          <div className="bg-brand-dark rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/10 rounded-full -translate-x-10 -translate-y-10 group-hover:scale-150 transition-transform duration-700" />
+            <div className="relative z-10 space-y-6">
+              <h3 className="text-xl font-black uppercase tracking-widest text-brand-orange">The Imperial Promise</h3>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-brand-orange">
+                    <Shield size={18} />
+                  </div>
+                  <span className="font-bold">Platinum Warranty Included</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-brand-blue">
+                    <Zap size={18} />
+                  </div>
+                  <span className="font-bold">99.9% Approval Available</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white">
+                    <Clock size={18} />
+                  </div>
+                  <span className="font-bold">24/7 No-Fee Emergency Service</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-brand-orange">
+                    <Users size={18} />
+                  </div>
+                  <span className="font-bold">Bilingual Service (Hablamos Español)</span>
+                </li>
+              </ul>
             </div>
           </div>
 

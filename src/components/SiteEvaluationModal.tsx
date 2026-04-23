@@ -253,6 +253,26 @@ export default function SiteEvaluationModal({ isOpen, onClose, type = 'commercia
                     </div>
 
                     <div className="pt-4 space-y-4">
+                      {/* Trust Badges in Modal */}
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 py-4 border-y border-gray-50 bg-gray-50/50 rounded-xl px-2">
+                        <div className="flex flex-col items-center text-center gap-1">
+                          <CheckCircle2 size={14} className="text-brand-orange" />
+                          <span className="text-[8px] font-black uppercase tracking-tighter text-brand-dark leading-none">Platinum Warranty</span>
+                        </div>
+                        <div className="flex flex-col items-center text-center gap-1 border-x border-gray-100">
+                          <CheckCircle2 size={14} className="text-brand-blue" />
+                          <span className="text-[8px] font-black uppercase tracking-tighter text-brand-dark leading-none">High-Approval Help</span>
+                        </div>
+                        <div className="flex flex-col items-center text-center gap-1 md:border-r border-gray-100">
+                          <CheckCircle2 size={14} className="text-brand-orange" />
+                          <span className="text-[8px] font-black uppercase tracking-tighter text-brand-dark leading-none">24/7 No-Fee</span>
+                        </div>
+                        <div className="flex flex-col items-center text-center gap-1 border-t md:border-t-0 pt-2 md:pt-0">
+                          <CheckCircle2 size={14} className="text-brand-blue" />
+                          <span className="text-[8px] font-black uppercase tracking-tighter text-brand-dark leading-none">Hablamos Español</span>
+                        </div>
+                      </div>
+
                       {error && (
                         <div className="p-4 bg-red-50 text-red-600 rounded-xl text-sm font-medium border border-red-100">
                           {error}

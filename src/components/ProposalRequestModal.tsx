@@ -171,15 +171,19 @@ export default function ProposalRequestModal({ isOpen, onClose, initialService =
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <CheckCircle2 className="text-brand-orange shrink-0" size={20} />
-                    <p className="text-xs font-medium text-white/80">Detailed Equipment Analysis</p>
+                    <p className="text-xs font-medium text-white/80 leading-relaxed"><span className="text-white font-black block uppercase text-[10px] tracking-widest mb-0.5">Platinum Warranty</span> Guaranteed coverage on parts and labor for elite systems.</p>
                   </div>
                   <div className="flex items-start gap-4">
                     <CheckCircle2 className="text-brand-orange shrink-0" size={20} />
-                    <p className="text-xs font-medium text-white/80">Energy ROI Projections</p>
+                    <p className="text-xs font-medium text-white/80 leading-relaxed"><span className="text-white font-black block uppercase text-[10px] tracking-widest mb-0.5">99.9% Approval</span> Streamlined application process with rapid approvals to fit any budget.</p>
                   </div>
                   <div className="flex items-start gap-4">
                     <CheckCircle2 className="text-brand-orange shrink-0" size={20} />
-                    <p className="text-xs font-medium text-white/80">Custom Maintenance Options</p>
+                    <p className="text-xs font-medium text-white/80 leading-relaxed"><span className="text-white font-black block uppercase text-[10px] tracking-widest mb-0.5">24/7 No-Fee Service</span> Rapid dispatch with $0 service fees for our contract clients.</p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <CheckCircle2 className="text-brand-orange shrink-0" size={20} />
+                    <p className="text-xs font-medium text-white/80 leading-relaxed"><span className="text-white font-black block uppercase text-[10px] tracking-widest mb-0.5">Bilingual Service</span> Hablamos Español. Our entire team is proud to serve the RGV community.</p>
                   </div>
                 </div>
 

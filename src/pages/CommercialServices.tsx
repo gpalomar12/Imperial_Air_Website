@@ -7,7 +7,7 @@ import CommercialServicesGrid from '../components/CommercialServicesGrid';
 export default function CommercialServices() {
   const navigate = useNavigate();
   return (
-    <div className="pt-24">
+    <div className="pt-32">
       <div className="bg-brand-dark text-white py-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="text-left mb-8">

@@ -35,6 +35,10 @@ export default function CommercialServicesGrid({ showViewAll = true }: Commercia
             <p className="text-white/60 max-w-xl text-lg">
               Comprehensive HVAC solutions designed for the unique demands of commercial facilities.
             </p>
+            <div className="inline-flex items-center gap-2 bg-brand-blue/20 text-brand-blue px-3 py-1 rounded-md text-[10px] font-black uppercase tracking-widest border border-brand-blue/30">
+              <Zap size={14} />
+              $0-Down Financing Available
+            </div>
           </div>
           {showViewAll && (
             <Link to="/services" className="btn-primary">

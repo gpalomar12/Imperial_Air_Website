@@ -55,7 +55,7 @@ export default function ServiceDetail() {
   const closeModal = () => setModalState(prev => ({ ...prev, isOpen: false }));
 
   return (
-    <div className="pt-24">
+    <div className="pt-32">
       <SchemaMarkup data={serviceSchema} />
       {/* Hero Section */}
       <section className="bg-gray-50 py-16 px-6 md:px-12">

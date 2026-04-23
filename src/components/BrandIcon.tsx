@@ -7,14 +7,14 @@ interface BrandIconProps {
   className?: string;
 }
 
-export default function BrandIcon({ size = 32, className }: BrandIconProps) {
+export default function BrandIcon({ size, className }: BrandIconProps) {
   const flameGradientId = "flame-gradient";
   const snowflakeGradientId = "snowflake-gradient";
 
   return (
     <div 
       className={cn("relative flex items-center justify-center shrink-0", className)}
-      style={{ width: size, height: size }}
+      style={!className?.includes('size-') && !className?.includes('w-') ? { width: size || 32, height: size || 32 } : undefined}
     >
       {/* SVG Definitions for Gradients */}
       <svg width="0" height="0" className="absolute">
@@ -38,7 +38,7 @@ export default function BrandIcon({ size = 32, className }: BrandIconProps) {
         style={{ clipPath: 'inset(0 50% 0 0)' }}
       >
         <Flame 
-          size={size} 
+          className="w-full h-full"
           stroke={`url(#${flameGradientId})`}
           fill={`url(#${flameGradientId})`}
           strokeWidth={1.5}
@@ -51,7 +51,7 @@ export default function BrandIcon({ size = 32, className }: BrandIconProps) {
         style={{ clipPath: 'inset(0 0 0 50%)' }}
       >
         <Snowflake 
-          size={size} 
+          className="w-full h-full"
           stroke={`url(#${snowflakeGradientId})`}
           strokeWidth={2.5}
         />

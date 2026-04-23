@@ -13,6 +13,24 @@ export const PHONE_NUMBER = "956-566-3406";
 export const EMAIL = "info@imperialair-rgv.com";
 export const ADDRESS = "Edinburg, TX";
 
+export const VALUE_PROPS = {
+  WARRANTY: {
+    title: "Platinum Warranty",
+    description: "Industry-leading multi-year coverage on parts and labor for elite systems.",
+    highlight: "Peace of Mind Guaranteed"
+  },
+  FINANCING: {
+    title: "99.9% Approval",
+    description: "Streamlined application process with rapid approvals to fit any budget.",
+    highlight: "Buy Now, Pay Later"
+  },
+  EMERGENCY: {
+    title: "24/7 No-Fee Service",
+    description: "Round-the-clock emergency support with $0 service fees for contract clients.",
+    highlight: "Always Available"
+  }
+};
+
 export interface ServiceDetail {
   id: string;
   title: string;

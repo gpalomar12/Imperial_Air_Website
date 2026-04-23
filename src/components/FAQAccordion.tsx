@@ -3,18 +3,24 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
 import { FAQS } from '../constants';
 
-export default function FAQAccordion() {
+interface FAQAccordionProps {
+  showTitle?: boolean;
+}
+
+export default function FAQAccordion({ showTitle = true }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-gray-50">
+    <section className={`py-24 px-6 md:px-12 bg-gray-50 ${!showTitle ? 'pt-12' : ''}`}>
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-black text-brand-dark uppercase tracking-tight">Frequently Asked Questions</h2>
-          <p className="text-brand-gray text-lg">
-            Common questions about our commercial HVAC partnerships.
-          </p>
-        </div>
+        {showTitle && (
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-4xl md:text-5xl font-black text-brand-dark uppercase tracking-tight">Frequently Asked Questions</h2>
+            <p className="text-brand-gray text-lg">
+              Common questions about our commercial and residential HVAC services.
+            </p>
+          </div>
+        )}
 
         <div className="space-y-4">
           {FAQS.map((faq, i) => (

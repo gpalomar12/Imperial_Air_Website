@@ -68,22 +68,28 @@ const projects = [
   }
 ];
 
-export default function ProjectShowcase() {
+interface ProjectShowcaseProps {
+  showTitle?: boolean;
+}
+
+export default function ProjectShowcase({ showTitle = true }: ProjectShowcaseProps) {
   return (
-    <section className="py-24 px-6 md:px-12 bg-white overflow-hidden">
+    <section className={`py-24 px-6 md:px-12 bg-white overflow-hidden ${!showTitle ? 'pt-12' : ''}`}>
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black text-brand-dark uppercase tracking-tight">Project Showcase</h2>
-            <p className="text-brand-gray max-w-xl text-lg">
-              A look at our recent commercial HVAC projects across the Rio Grande Valley.
-            </p>
+        {showTitle && (
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className="space-y-4">
+              <h2 className="text-4xl md:text-5xl font-black text-brand-dark uppercase tracking-tight">Project Showcase</h2>
+              <p className="text-brand-gray max-w-xl text-lg">
+                A look at our recent commercial HVAC projects across the Rio Grande Valley.
+              </p>
+            </div>
+            <div className="flex items-center gap-4 border-b-2 border-brand-orange pb-2">
+              <span className="text-brand-dark font-black uppercase tracking-widest text-sm">Proven Results</span>
+              <CheckCircle2 className="text-brand-orange" size={20} />
+            </div>
           </div>
-          <div className="flex items-center gap-4 border-b-2 border-brand-orange pb-2">
-            <span className="text-brand-dark font-black uppercase tracking-widest text-sm">Proven Results</span>
-            <CheckCircle2 className="text-brand-orange" size={20} />
-          </div>
-        </div>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (

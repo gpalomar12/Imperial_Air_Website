@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
- * SEO Component — manages per-page <title> and <meta description>.
+ * SEO Component — sets per-page <title> and <meta description> on navigation.
  *
- * NOTE: The primary JSON-LD / HVACBusiness schema lives statically in index.html
- * so Google can read it without running JavaScript. This component only handles
- * per-page title and description overrides for React Router navigation.
+ * NOTE: The JSON-LD / HVACBusiness schema now lives in index.html (static HTML)
+ * so Google can read it without JavaScript. This component handles
+ * dynamic title/description only — do NOT add schema back here.
  */
 
 interface PageMeta { title: string; description: string; }
@@ -14,7 +14,7 @@ interface PageMeta { title: string; description: string; }
 const PAGE_META: Record<string, PageMeta> = {
   '/': {
     title: 'Imperial Air LLC | Commercial & Residential HVAC – Rio Grande Valley',
-    description: 'Imperial Air LLC provides commercial and residential HVAC services across the Rio Grande Valley. 24/7 emergency AC repair, preventative maintenance contracts, and system installations in McAllen, Edinburg, and beyond.',
+    description: 'Imperial Air LLC provides commercial and residential HVAC services across the Rio Grande Valley. 24/7 emergency AC repair, preventative maintenance contracts, and installations in McAllen, Edinburg, and beyond.',
   },
   '/services': {
     title: 'Commercial HVAC Services | Imperial Air LLC – RGV',
@@ -46,7 +46,7 @@ const PAGE_META: Record<string, PageMeta> = {
   },
   '/about': {
     title: 'About Imperial Air LLC | Licensed HVAC Contractor – Rio Grande Valley',
-    description: 'Imperial Air LLC is a licensed HVAC contractor (TX Lic. #220p9726) serving the Rio Grande Valley. Family-owned, bilingual, and committed to quality service.',
+    description: 'Imperial Air LLC is a licensed HVAC contractor (TX Lic. #220p9726) serving the Rio Grande Valley. Family-owned, bilingual, committed to quality commercial and residential HVAC service.',
   },
   '/contact': {
     title: 'Contact Imperial Air LLC | Free HVAC Estimate – RGV',
@@ -55,14 +55,38 @@ const PAGE_META: Record<string, PageMeta> = {
 };
 
 const CITY_META: Record<string, PageMeta> = {
-  mcallen:     { title: 'Commercial HVAC in McAllen, TX | Imperial Air LLC',     description: 'Commercial and residential HVAC services in McAllen, TX. Emergency AC repair, maintenance contracts, and installations. Call (956) 566-3406.' },
-  edinburg:    { title: 'Commercial HVAC in Edinburg, TX | Imperial Air LLC',    description: 'Imperial Air LLC is based in Edinburg, TX — 24/7 HVAC service across Hidalgo County. TX Lic. #220p9726.' },
-  harlingen:   { title: 'Commercial HVAC in Harlingen, TX | Imperial Air LLC',   description: 'Commercial and residential HVAC repair and maintenance in Harlingen, TX. Imperial Air LLC serves all of Cameron County and the RGV.' },
-  brownsville: { title: 'Commercial HVAC in Brownsville, TX | Imperial Air LLC', description: 'Expert commercial HVAC and AC repair in Brownsville, TX. Preventative maintenance contracts and 24/7 emergency service throughout the RGV.' },
-  mission:     { title: 'Commercial HVAC in Mission, TX | Imperial Air LLC',     description: 'AC repair, maintenance, and HVAC installations for businesses and homes in Mission, TX. Imperial Air LLC serves the entire Rio Grande Valley.' },
-  pharr:       { title: 'Commercial HVAC in Pharr, TX | Imperial Air LLC',       description: 'HVAC installation, repair, and maintenance in Pharr, TX. Imperial Air LLC serves commercial and residential clients across Hidalgo County.' },
-  weslaco:     { title: 'Commercial HVAC in Weslaco, TX | Imperial Air LLC',     description: 'Commercial and residential AC repair and HVAC services in Weslaco, TX. Expert solutions throughout the Rio Grande Valley.' },
-  'san-benito': { title: 'Commercial HVAC in San Benito, TX | Imperial Air LLC', description: 'HVAC repair and maintenance in San Benito, TX. Imperial Air LLC provides expert commercial and residential HVAC across the Rio Grande Valley.' },
+  'mcallen':     { 
+    title: 'AC Repair & HVAC Services in McAllen, TX | Imperial Air', 
+    description: 'Expert AC repair in McAllen. We serve the area near La Plaza Mall with 24/7 HVAC support. Call (956) 566-3406 for your free service quote today.' 
+  },
+  'mission':     { 
+    title: 'AC Repair & HVAC Services in Mission, TX | Imperial Air', 
+    description: 'Expert AC repair in Mission. Serving Sharyland and all Mission neighborhoods with 24/7 HVAC support. Call (956) 566-3406 for a free estimate today!' 
+  },
+  'pharr':       { 
+    title: 'AC Repair & HVAC Services in Pharr, TX | Imperial Air', 
+    description: 'Expert AC repair in Pharr, TX. We serve neighborhoods near the Pharr-Reynosa Bridge with 24/7 HVAC support. Call (956) 566-3406 for a free estimate now!' 
+  },
+  'weslaco':     { 
+    title: 'AC Repair & HVAC Services in Weslaco, TX | Imperial Air', 
+    description: 'Expert AC repair in Weslaco, TX. Serving neighborhoods near Estero Llano Grande with 24/7 HVAC support. Call (956) 566-3406 for a free estimate today!' 
+  },
+  'edinburg':    { 
+    title: 'AC Repair & HVAC Experts in Edinburg, TX | Imperial Air', 
+    description: 'Need fast AC repair in Edinburg? From UTRGV to north Edinburg, Imperial Air offers 24/7 HVAC service. Call (956) 566-3406 for a free estimate today!' 
+  },
+  'harlingen':   { 
+    title: 'AC Repair & HVAC Services in Harlingen, TX | Imperial Air', 
+    description: 'Expert AC repair in Harlingen, TX. Near the Iwo Jima Memorial? We offer 24/7 HVAC support and free estimates. Call (956) 566-3406 to stay cool today!' 
+  },
+  'brownsville': { 
+    title: 'AC Repair & HVAC Services in Brownsville, TX | Imperial Air', 
+    description: 'Expert AC repair in Brownsville, TX. Serving neighborhoods near Gladys Porter Zoo with 24/7 support. Call (956) 566-3406 for a free estimate today!' 
+  },
+  'san-benito':  { 
+    title: 'AC Repair & HVAC Services in San Benito, TX | Imperial Air', 
+    description: 'Expert AC repair in San Benito, TX. Locally serving the San Benito area with 24/7 emergency HVAC support. Call (956) 566-3406 for a free estimate today!' 
+  },
 };
 
 export default function SEO() {
@@ -77,7 +101,7 @@ export default function SEO() {
       const city = cityMatch[1].toLowerCase();
       meta = CITY_META[city] ?? {
         title: `HVAC Services in ${city.charAt(0).toUpperCase() + city.slice(1)}, TX | Imperial Air LLC`,
-        description: `Imperial Air LLC provides commercial and residential HVAC services in ${city}, TX. Call (956) 566-3406 for emergency service or a free estimate.`,
+        description: `Imperial Air LLC provides commercial and residential HVAC services in ${city}, TX. Call (956) 566-3406.`,
       };
     } else {
       meta = PAGE_META[path];

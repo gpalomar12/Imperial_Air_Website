@@ -4,11 +4,13 @@ import { Phone, Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { PHONE_NUMBER, EMAIL } from '../constants';
 import BrandIcon from './BrandIcon';
+import AnnouncementBar from './AnnouncementBar';
 
 const navLinks = [
   { name: 'Commercial Services', path: '/services' },
+  { name: 'Portfolio', path: '/portfolio' },
+  { name: 'Service areas', path: '/areas' },
   { name: 'About', path: '/about' },
-  { name: 'Service Areas', path: '/areas' },
   { name: 'Contact', path: '/contact' },
 ];
 
@@ -42,25 +44,26 @@ export default function Header() {
     <header 
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        shouldBeDark ? "bg-white shadow-md" : "bg-transparent"
+        shouldBeDark ? "bg-white shadow-md text-brand-dark" : "bg-transparent text-white"
       )}
     >
+      <AnnouncementBar />
       <div className={cn(
         "px-6 md:px-12 transition-all duration-300",
-        shouldBeDark ? "py-3" : "py-6"
+        shouldBeDark ? "py-2 md:py-3" : "py-4 md:py-6"
       )}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" onClick={handleLogoClick} className="flex items-center gap-3 group">
-            <BrandIcon size={40} />
+          <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2 md:gap-3 group">
+            <BrandIcon className="size-8 md:size-10" />
             <div className="flex flex-col">
               <span className={cn(
-                "text-2xl font-black tracking-tighter leading-none uppercase transition-colors duration-300",
+                "text-xl md:text-2xl font-black tracking-tighter leading-none uppercase transition-colors duration-300 whitespace-nowrap",
                 shouldBeDark ? "text-brand-dark" : "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
               )}>
                 IMPERIAL <span className="text-brand-blue">AIR</span> <span className="text-[10px] font-bold">LLC</span>
               </span>
-              <span className="text-[10px] font-bold tracking-widest uppercase text-brand-orange">
+              <span className="text-[8px] md:text-[10px] font-bold tracking-widest uppercase text-brand-orange whitespace-nowrap">
                 COOLING AND HEATING
               </span>
             </div>

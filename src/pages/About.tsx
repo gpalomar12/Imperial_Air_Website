@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function About() {
   const navigate = useNavigate();
   return (
-    <div className="pt-24">
+    <div className="pt-32">
       {/* Hero Section */}
       <div className="bg-brand-dark py-24 px-6 md:px-12 text-white text-center relative">
         <div className="max-w-7xl mx-auto mb-8 text-left">
@@ -77,7 +77,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: <Award className="text-brand-orange" size={32} />,
@@ -86,21 +86,26 @@ export default function About() {
               },
               {
                 icon: <Users className="text-brand-orange" size={32} />,
+                title: "Bilingual Service",
+                desc: "Hablamos Español. We are proud to serve our bilingual RGV community with clear communication."
+              },
+              {
+                icon: <Shield className="text-brand-orange" size={32} />,
                 title: "Client Partnership",
-                desc: "We don't just fix units; we manage your HVAC assets to ensure long-term value."
+                desc: "We manage your HVAC assets to ensure long-term value and operational reliability."
               },
               {
                 icon: <Clock className="text-brand-orange" size={32} />,
                 title: "Prompt Response",
-                desc: "Time is money for businesses. We respond quickly to minimize downtime."
+                desc: "Time is money for businesses. We respond quickly to minimize your downtime."
               }
             ].map((value, i) => (
-              <div key={i} className="bg-white p-10 rounded-3xl shadow-sm border border-gray-100 space-y-6">
-                <div className="w-16 h-16 bg-brand-orange/10 rounded-2xl flex items-center justify-center">
+              <div key={i} className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 space-y-6 flex flex-col">
+                <div className="w-14 h-14 bg-brand-orange/10 rounded-2xl flex items-center justify-center shrink-0">
                   {value.icon}
                 </div>
-                <h3 className="text-2xl font-black text-brand-dark uppercase tracking-tight">{value.title}</h3>
-                <p className="text-brand-gray leading-relaxed">{value.desc}</p>
+                <h3 className="text-xl font-black text-brand-dark uppercase tracking-tight">{value.title}</h3>
+                <p className="text-brand-gray text-sm leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>
