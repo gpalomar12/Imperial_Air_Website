@@ -2,27 +2,130 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Core Pages -->
-  <url><loc>https://imperialair-rgv.com/</loc><lastmod>2026-04-22</lastmod><priority>1.0</priority></url>
-  <url><loc>https://imperialair-rgv.com/services</loc><lastmod>2026-04-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://imperialair-rgv.com/about</loc><lastmod>2026-04-22</lastmod><priority>0.7</priority></url>
-  <url><loc>https://imperialair-rgv.com/contact</loc><lastmod>2026-04-22</lastmod><priority>0.8</priority></url>
+  <url>
+    <loc>https://imperialair-rgv.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/services</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/portfolio</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-  <!-- Commercial Service Detail Pages -->
-  <url><loc>https://imperialair-rgv.com/services/maintenance</loc><lastmod>2026-04-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://imperialair-rgv.com/services/rtu</loc><lastmod>2026-04-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://imperialair-rgv.com/services/chillers</loc><lastmod>2026-04-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://imperialair-rgv.com/services/emergency</loc><lastmod>2026-04-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://imperialair-rgv.com/services/upgrades</loc><lastmod>2026-04-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://imperialair-rgv.com/services/optimization</loc><lastmod>2026-04-22</lastmod><priority>0.8</priority></url>
+  <!-- Service Detail Pages -->
+  <url>
+    <loc>https://imperialair-rgv.com/services/maintenance</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/services/rooftop-units</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/services/chillers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/services/emergency</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/services/upgrades</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/services/optimization</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-  <!-- City / Service Area Pages -->
-  <url><loc>https://imperialair-rgv.com/areas/mcallen</loc><lastmod>2026-04-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://imperialair-rgv.com/areas/edinburg</loc><lastmod>2026-04-22</lastmod><priority>0.9</priority></url>
-  <url><loc>https://imperialair-rgv.com/areas/harlingen</loc><lastmod>2026-04-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://imperialair-rgv.com/areas/brownsville</loc><lastmod>2026-04-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://imperialair-rgv.com/areas/mission</loc><lastmod>2026-04-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://imperialair-rgv.com/areas/pharr</loc><lastmod>2026-04-22</lastmod><priority>0.8</priority></url>
-  <url><loc>https://imperialair-rgv.com/areas/weslaco</loc><lastmod>2026-04-22</lastmod><priority>0.7</priority></url>
-  <url><loc>https://imperialair-rgv.com/areas/san-benito</loc><lastmod>2026-04-22</lastmod><priority>0.7</priority></url>
+  <!-- Location Pages -->
+  <url>
+    <loc>https://imperialair-rgv.com/areas/mcallen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/areas/edinburg</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/areas/mission</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/areas/pharr</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/areas/harlingen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/areas/brownsville</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/areas/weslaco</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imperialair-rgv.com/areas/san-benito</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- McAllen Service+City Pages -->
+<url><loc>https://imperialair-rgv.com/areas/mcallen/ac-repair</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/mcallen/ac-installation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/mcallen/commercial-hvac</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/mcallen/emergency</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
+<!-- Edinburg Service+City Pages -->
+<url><loc>https://imperialair-rgv.com/areas/edinburg/ac-repair</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/edinburg/ac-installation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/edinburg/commercial-hvac</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/edinburg/emergency</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+<!-- Other Cities — AC Repair -->
+<url><loc>https://imperialair-rgv.com/areas/mission/ac-repair</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/pharr/ac-repair</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/weslaco/ac-repair</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/harlingen/ac-repair</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/brownsville/ac-repair</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+<!-- Other Cities — Commercial HVAC -->
+<url><loc>https://imperialair-rgv.com/areas/mission/commercial-hvac</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://imperialair-rgv.com/areas/pharr/commercial-hvac</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

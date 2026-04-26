@@ -49,6 +49,8 @@ export default function TrustProof() {
               src="/images/digital_thermostat.jpg" 
               alt="Smart Thermostat Optimization" 
               className="w-full h-32 object-cover opacity-80"
+              width="600"
+              height="128"
               referrerPolicy="no-referrer"
             />
           </div>

@@ -185,17 +185,56 @@ export const COMMERCIAL_SERVICES: ServiceDetail[] = [
 ];
 
 export const FAQS = [
+  // --- Commercial ---
   {
-    question: "Do you offer commercial maintenance contracts?",
-    answer: "Yes, we provide customized preventative maintenance plans tailored to your facility's specific size and equipment needs."
+    question: "Do you offer commercial HVAC maintenance contracts?",
+    answer: "Yes. We offer customized preventative maintenance plans designed around your facility's size, equipment type, and operating hours. Plans include scheduled inspections, filter and belt replacements, coil cleaning, refrigerant checks, and detailed reporting. Contact us for a custom proposal."
   },
   {
-    question: "What types of buildings do you service?",
-    answer: "We service a wide range of commercial properties including offices, retail centers, warehouses, and multi-unit residential properties."
+    question: "What types of commercial properties do you service?",
+    answer: "We service a wide range of commercial properties across the Rio Grande Valley including retail centers, office buildings, restaurants, medical offices, warehouses, schools, and multi-family residential complexes."
   },
   {
-    question: "How fast is your emergency response?",
-    answer: "We offer priority dispatch for our contract clients and same-day emergency response for all commercial critical failures."
+    question: "How fast is your emergency response time?",
+    answer: "We offer 24/7 emergency response with priority dispatch for contract clients. For all commercial critical failures, we target same-day service. Our service vehicles are fully stocked to handle most repairs on the first visit."
+  },
+  {
+    question: "Do you charge extra service fees for after-hours emergency calls?",
+    answer: "Contract clients receive $0 service fees around the clock, including nights, weekends, and holidays. Contact us to learn about our maintenance contract options."
+  },
+  {
+    question: "What commercial HVAC brands do you service?",
+    answer: "We service all major commercial HVAC brands including Carrier, Trane, Lennox, York, Daikin, Rheem, and more. Our technicians are trained to work on rooftop units (RTUs), chillers, split systems, VRF systems, and building automation controls."
+  },
+  {
+    question: "Can you help our business reduce its energy bills?",
+    answer: "Absolutely. Our Energy Optimization service includes full energy audits, system re-commissioning, air and water balancing, smart thermostat and BAS integration, and peak load management strategies. Many clients see a 15–25% reduction in HVAC-related energy costs."
+  },
+  {
+    question: "Do you work with property managers and facilities directors?",
+    answer: "Yes — we specialize in building long-term partnerships with commercial property managers and facilities teams. We provide detailed service reports, asset tracking, and scheduled maintenance calendars to make managing your HVAC portfolio simple."
+  },
+  // --- Residential ---
+  {
+    question: "Do you also service residential AC units?",
+    answer: "Yes. In addition to our commercial work, we service all residential AC systems including central air, mini-splits, and heat pumps. We handle repairs, tune-ups, and full system replacements."
+  },
+  {
+    question: "How often should I service my home AC unit in South Texas?",
+    answer: "In the Rio Grande Valley's extreme heat, we recommend a full AC tune-up at least twice per year — once before summer (March/April) and once before winter (October). Regular maintenance extends system life and prevents costly breakdowns during peak season."
+  },
+  {
+    question: "Do you offer financing for new AC systems?",
+    answer: "Yes. We offer financing with 99.9% approval rates to help homeowners and businesses get the equipment they need without upfront costs. Ask us about our buy-now, pay-later options when you call."
+  },
+  // --- General ---
+  {
+    question: "What areas of the Rio Grande Valley do you serve?",
+    answer: "We serve the entire Rio Grande Valley including McAllen, Edinburg, Mission, Pharr, Weslaco, Harlingen, Brownsville, San Benito, and all surrounding communities. Call us to confirm service availability in your area."
+  },
+  {
+    question: "Is Imperial Air LLC licensed and insured?",
+    answer: "Yes. Imperial Air LLC is a fully licensed HVAC contractor in the state of Texas (License TACLA 111452C) and carries full liability and workers' compensation insurance for your protection."
   }
 ];
 

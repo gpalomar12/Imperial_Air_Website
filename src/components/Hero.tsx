@@ -26,7 +26,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-3">
             <div className="inline-flex items-center gap-2 bg-brand-orange text-white px-3 md:px-4 py-1 rounded-full text-[10px] md:text-sm font-bold uppercase tracking-wider">
               <Shield size={14} className="md:size-4" />
-              HVAC & Residential Specialists
+              Commercial & Residential Specialists
             </div>
             <div className="inline-flex items-center gap-2 bg-white/10 text-white px-3 md:px-4 py-1 rounded-full text-[10px] md:text-sm font-bold uppercase tracking-wider border border-white/10 backdrop-blur-sm">
               <span className="text-brand-orange">●</span>
@@ -71,6 +71,8 @@ export default function Hero() {
               src="/images/comm_roof_top_unit.jpg" 
               alt="Commercial HVAC Rooftop Unit Installation" 
               className="w-full aspect-[4/3] md:aspect-auto object-cover"
+              width="800"
+              height="600"
               referrerPolicy="no-referrer"
             />
             {/* Overlay Badge - More compact on mobile */}

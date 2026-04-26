@@ -26,7 +26,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <div className="text-xs font-mono text-white/40">
-              LICENSE: TACLA00111452C
+              LICENSE: TACLA 111452C
             </div>
             <div className="text-[10px] font-black uppercase tracking-widest text-brand-orange border border-brand-orange/30 px-2 py-0.5 rounded">
               Hablamos Español
@@ -109,7 +109,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-white/40 text-xs">
-        <p>© {new Date().getFullYear()} Imperial Air LLC. All Rights Reserved. TACLA00111452C</p>
+        <p>© {new Date().getFullYear()} Imperial Air LLC. All Rights Reserved. TACLA 111452C</p>
       </div>
     </footer>
   );

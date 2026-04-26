@@ -1,9 +1,11 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, Phone, Star, ArrowLeft } from 'lucide-react';
+import { MapPin, Phone, Star, ArrowLeft, Sparkles } from 'lucide-react';
 import { PHONE_NUMBER } from '../constants';
 import MapComponent from '../components/MapComponent';
 import SchemaMarkup from '../components/SchemaMarkup';
+import LocationContactForm from '../components/LocationContactForm';
+import { Link } from 'react-router-dom';
 
 const CITY_COORDS: Record<string, [number, number]> = {
   'edinburg': [26.3017, -98.1633],
@@ -316,6 +318,60 @@ export default function LocationPage() {
                     <p className="text-brand-gray leading-relaxed">{service.desc}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+            {/* Service+City Link Grid — adds internal links for SEO */}
+            <div className="mt-12 p-8 bg-gray-50 rounded-3xl space-y-4">
+              <h3 className="font-black text-brand-dark uppercase tracking-tight text-lg">
+                More {cityName} HVAC Services
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {[
+                  { slug: 'ac-repair',       label: `AC Repair in ${cityName}` },
+                  { slug: 'ac-installation', label: `AC Installation in ${cityName}` },
+                  { slug: 'commercial-hvac', label: `Commercial HVAC in ${cityName}` },
+                  { slug: 'emergency',       label: `24/7 Emergency in ${cityName}` },
+                ].map(link => (
+                  <Link
+                    key={link.slug}
+                    to={`/areas/${cityKey}/${link.slug}`}
+                    className="text-center px-4 py-3 bg-white border border-gray-100 rounded-xl text-sm font-bold text-brand-dark hover:border-brand-orange hover:text-brand-orange transition-colors shadow-sm"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            {/* Contact Form Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-5 space-y-6">
+                <div className="inline-flex items-center gap-2 bg-brand-orange/10 text-brand-orange px-4 py-2 rounded-full text-sm font-bold uppercase tracking-widest">
+                  <Sparkles size={16} />
+                  Free Service Estimates
+                </div>
+                <h2 className="text-4xl font-black text-brand-dark uppercase tracking-tight leading-none">
+                  Get Your {cityName} AC Quote Today
+                </h2>
+                <p className="text-xl text-brand-gray leading-relaxed">
+                  Don't let a minor issue turn into a major breakdown. Our {cityName} technicians are ready to provide expert advice and high-quality HVAC solutions at competitive rates.
+                </p>
+                <div className="space-y-4 pt-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-brand-dark text-white rounded-lg flex items-center justify-center font-bold">1</div>
+                    <p className="font-bold text-lg text-brand-dark">Same-Day Local Response</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-brand-dark text-white rounded-lg flex items-center justify-center font-bold">2</div>
+                    <p className="font-bold text-lg text-brand-dark">Expert South Texas Tuning</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-brand-dark text-white rounded-lg flex items-center justify-center font-bold">3</div>
+                    <p className="font-bold text-lg text-brand-dark">Platinum Warranty Coverage</p>
+                  </div>
+                </div>
+              </div>
+              <div className="lg:col-span-7">
+                <LocationContactForm cityName={cityName} />
               </div>
             </div>
 

@@ -12,7 +12,7 @@ export default function CommercialServices() {
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="text-left mb-8">
             <button 
-              onClick={() => navigate('/')}
+              onClick={() => navigate(-1)}
               className="flex items-center gap-2 text-white/60 hover:text-brand-orange font-bold uppercase tracking-widest text-xs transition-colors group"
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
