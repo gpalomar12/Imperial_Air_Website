@@ -219,13 +219,25 @@ export default function LocationPage() {
       <SchemaMarkup data={locationSchema} />
       <div className="bg-gray-50 py-16 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
-          <button 
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-brand-gray hover:text-brand-orange font-bold uppercase tracking-widest text-sm transition-colors group mb-12"
-          >
-            <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-            Back to Service Areas
-          </button>
+          {!isRGV && (
+            <button 
+              onClick={() => navigate('/areas')}
+              className="flex items-center gap-2 text-brand-gray hover:text-brand-orange font-bold uppercase tracking-widest text-sm transition-colors group mb-12"
+            >
+              <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+              Back to Service Areas
+            </button>
+          )}
+
+          {isRGV && (
+            <button 
+              onClick={() => navigate('/')}
+              className="flex items-center gap-2 text-brand-gray hover:text-brand-orange font-bold uppercase tracking-widest text-sm transition-colors group mb-12"
+            >
+              <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+              Back to Home
+            </button>
+          )}
 
           <div className="max-w-7xl mx-auto text-center space-y-8">
             <div className="flex justify-center">
