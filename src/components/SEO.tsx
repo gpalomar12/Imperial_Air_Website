@@ -60,6 +60,10 @@ const PAGE_META: Record<string, PageMeta> = {
     title: 'Contact Imperial Air LLC | Free HVAC Estimate – RGV',
     description: 'Contact Imperial Air LLC for commercial HVAC proposals, emergency service, or residential AC repair. Call (956) 566-3406 or request a free estimate online.',
   },
+   '/commercial-hvac-rgv': {
+    title: 'Commercial HVAC Contractor RGV | Maintenance Contracts | Imperial Air LLC',
+    description: 'Imperial Air LLC provides commercial HVAC services across the Rio Grande Valley. Maintenance contracts, rooftop unit repair, 24/7 emergency response for businesses in McAllen, Edinburg, Mission, Harlingen, and Brownsville. EPA certified. TACLA 111452C.',
+  },
   // McAllen service+city combo pages
 '/areas/mcallen/ac-repair': {
   title: 'AC Repair in McAllen, TX | Fast Same-Day Service | Imperial Air',

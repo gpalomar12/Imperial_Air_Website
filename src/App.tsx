@@ -6,6 +6,7 @@ import SEO from './components/SEO';
 import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
 import CommercialServices from './pages/CommercialServices';
+import CommercialHVACRGV from './pages/CommercialHVACRGV';
 import Projects from './pages/Projects';
 import FAQ from './pages/FAQ';
 import LocationPage from './pages/LocationPage';
@@ -23,6 +24,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<CommercialServices />} />
+          <Route path="/commercial-hvac-rgv" element={<CommercialHVACRGV />} />
           <Route path="/portfolio" element={<Projects />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
